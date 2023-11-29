@@ -17,7 +17,7 @@
 class cTree {
 public:
     explicit cTree(cNode &cRoot);
-    cTree(cTree &other);
+    cTree(const cTree &other);
     cTree();
     ~cTree();
 
@@ -26,7 +26,7 @@ public:
     cTree join( std::vector<std::string> formula);
     cTree join(cTree &other);
 
-    int compute( std::vector<std::string> formula);
+    int compute(std::vector<std::string> formula) const;
 
     cTree& operator=(const cTree& other);
     cTree operator+(cTree& other);
@@ -49,8 +49,10 @@ private:
     static std::vector<cNode*> getLeavesAtLowestLevel(cNode* node);
     static std::vector<std::vector<cNode*>> segregateLeavesByParent(const std::vector<cNode*>& leaves);
     static int maxDepth(cNode* root);
-    static void printBTRecursiveHelp(const std::string& prefix, cNode* node, bool isLeft);
+    static void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leavesByParent);
 
+
+    static void printBTRecursiveHelp(const std::string& prefix, cNode* node, bool isLeft);
     static std::vector<std::string> getPrefixRecursiveHelp(cNode *node);
 };
 
@@ -61,7 +63,7 @@ private:
 cTree enter( std::vector<std::string> formula);
 
 
-void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leavesByParent);
+
 
 
 

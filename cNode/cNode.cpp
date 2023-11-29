@@ -6,24 +6,13 @@ cNode::cNode() : vChildren(new std::vector<cNode*>()), CParent(nullptr), sValue(
 
 cNode::cNode(std::string sValue) : vChildren(new std::vector<cNode*>()), CParent(nullptr), sValue(sValue) {}
 
-cNode::cNode(cNode &other) {
-
-
-    // Kopiuj wartość
-    this->sValue = other.sValue;
-
-    // Kopiuj dzieci
-    this->vChildren = new std::vector<cNode*>;
+cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), CParent(nullptr), sValue(other.sValue) {
     for (const auto &child : *(other.vChildren)) {
         cNode *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
         newChild->CParent = this;  // Ustaw nowe dziecko na bieżącego rodzica
-        this->vChildren->push_back(newChild);
+        vChildren->push_back(newChild);
     }
-
-    // Kopiuj rodzica
-    this->CParent = other.CParent;  // Rodzic zostanie ustawiony w cAddtoNode
 }
-
 
 // Destruktor
 cNode::~cNode() {
@@ -42,9 +31,6 @@ cNode::~cNode() {
     }
 }
 
-void cNode::setValue(std::string newValue) {
-    sValue = newValue;
-}
 
 
 void cNode::cAddtoNode(cNode &newChild) {
@@ -52,8 +38,5 @@ void cNode::cAddtoNode(cNode &newChild) {
     newChild.CParent = this;
 }
 
-bool cNode::isOperator() {
-    return ::isOperator(sValue); //TODO po co to :: ?
-}
 
 

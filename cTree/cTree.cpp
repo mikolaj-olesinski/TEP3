@@ -5,8 +5,12 @@ cTree::cTree(cNode &newRoot) {
     cRoot = &newRoot;
 }
 
-cTree::cTree(cTree &other) {
-    cRoot = new cNode(*other.cRoot);
+cTree::cTree(const cTree &other) {
+    if (other.cRoot != nullptr) {
+        cRoot = new cNode(*other.cRoot);
+    } else {
+        cRoot = nullptr;
+    }
 }
 
 cTree::cTree() {
@@ -45,7 +49,7 @@ cTree enter( std::vector<std::string> formula){
             }
 
             CurrentNode->cAddtoNode(*newAddedNode); //dodajemy nowy wezel do aktualnego wezla na ktorym operujemy
-            if (newAddedNode->isOperator()) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
+            if (isOperator(newAddedNode->sValue)) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
                 CurrentNode = newAddedNode; //przypisujemy adres nowego wezla do CurrentNode
             }
         }
@@ -116,7 +120,7 @@ cTree cTree::join( std::vector<std::string> formula) {
             }
 
             CurrentNode->cAddtoNode(*newAddedNode); //dodajemy nowy wezel do aktualnego wezla na ktorym operujemy
-            if (newAddedNode->isOperator()) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
+            if (isOperator(newAddedNode->sValue)) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
                 CurrentNode = newAddedNode; //przypisujemy adres nowego wezla do CurrentNode
             }
         }
@@ -197,7 +201,7 @@ int cTree::maxDepth(cNode* root) {
     return maxChildDepth + 1;
 }
 
-void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leaves) {
+void cTree::getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leaves) {
     if (!node)
         return;
 
@@ -207,7 +211,7 @@ void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vecto
     }
 
     for (cNode* child : *(node->vChildren)) {
-        getLeavesAtDepth(child, currentDepth + 1, targetDepth, leaves);
+        cTree::getLeavesAtDepth(child, currentDepth + 1, targetDepth, leaves);
     }
 }
 
@@ -217,7 +221,7 @@ std::vector<cNode*> cTree::getLeavesAtLowestLevel(cNode* root) {
     int iMaxDepth = cTree::maxDepth(root);
 
     if (iMaxDepth > 0) {
-        getLeavesAtDepth(root, 0, iMaxDepth - 1, leaves); // targetDepth = maxDepth - 1
+        cTree::getLeavesAtDepth(root, 0, iMaxDepth - 1, leaves); // targetDepth = maxDepth - 1
     }
 
     return leaves;
@@ -246,7 +250,7 @@ std::vector<std::vector<cNode*>> cTree::segregateLeavesByParent(const std::vecto
 }
 
 
-int cTree::compute( std::vector<std::string> formula){
+int cTree::compute( std::vector<std::string> formula) const{
 
     cTree *Tree = new cTree(*this);
 
@@ -294,6 +298,7 @@ int cTree::compute( std::vector<std::string> formula){
 
 }
 
+
 cTree& cTree::operator=(const cTree& other) {
     if (this != &other) {
         delete cRoot;
@@ -314,7 +319,7 @@ void cTree::findVariablesRecursive(cNode* currentNode, std::set<std::string>& va
     }
 
     // Check if the current node's value is a variable
-    if (!currentNode->isOperator() && checkIfVariable(currentNode->sValue)) {
+    if (checkIfVariable(currentNode->sValue)) {
         variables.insert(currentNode->sValue);
     }
 
@@ -338,7 +343,7 @@ void cTree::replaceVariableRecursive(cNode* currentNode, std::string& variable, 
     }
 
     if (currentNode->sValue == variable) {
-        currentNode->setValue(replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]);
+        currentNode->sValue = (replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]);
     }
 
     // Recursively visit children

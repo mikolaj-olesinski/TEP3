@@ -10,7 +10,7 @@ public:
 
     cNode();
     cNode(std::string sValue);
-    cNode(cNode &other);
+    cNode(const cNode &other);
     ~cNode();
 
 
@@ -18,9 +18,7 @@ public:
     cNode* CParent; //TODO zmienic nazwe na chyba vParent
     std::string sValue;
 
-    void setValue(std::string newValue);
     void cAddtoNode(cNode &newChild);
-    bool isOperator();
 
     friend class cTree;
 
