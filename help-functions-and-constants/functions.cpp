@@ -1,105 +1,105 @@
 #include "functions.h"
 
 bool isOperator(const std::string& sValue) {
-    for(const auto & i : OPERATORS) {
-        if (sValue == i) {
-            return true;
+    for(const auto & i : OPERATORS) { //dla kazdego elementu z OPERATORS
+        if (sValue == i) { //jesli element z OPERATORS jest rowny sValue
+            return true; //zwroc true
         }
     }
-    return false;
+    return false; //jesli nie zwroc false
 }
 
 bool isArthOperator(const std::string& sValue) {
-    for(const auto & i : ARTH_OPERATORS) {
-        if (sValue == i) {
-            return true;
+    for(const auto & i : ARTH_OPERATORS) { //dla kazdego elementu z OPERATORS
+        if (sValue == i) { //jesli element z OPERATORS jest rowny sValue
+            return true; //zwroc true
         }
     }
-    return false;
+    return false; //jesli nie zwroc false
 }
 
-bool isTrigOperator(const std::string& sValue) {
-    for(const auto & i : TRIG_OPERATORS) {
-        if (sValue == i) {
-            return true;
+bool isTrigOperator(const std::string& sValue) { //dla kazdego elementu z OPERATORS
+    for(const auto & i : TRIG_OPERATORS) { //jesli element z OPERATORS jest rowny sValue
+        if (sValue == i) { //zwroc true
+            return true; //jesli nie zwroc false
         }
     }
-    return false;
+    return false; //jesli nie zwroc false
 }
 
 int fMaxAmountOfChildren(const std::string& sValue) {
-    if (isArthOperator(sValue)) {
-        return MAX_AMOUNT_OF_CHILDREN_FOR_ARTH;
-    } else if (isTrigOperator(sValue)) {
+    if (isArthOperator(sValue)) { //jesli string jest operatorem arytmetycznym
+        return MAX_AMOUNT_OF_CHILDREN_FOR_ARTH; //zwroc maksymalna ilosc dzieci dla operatora arytmetycznego
+    } else if (isTrigOperator(sValue)) { //jesli string jest operatorem trygonometrycznym
         return MAX_AMOUNT_OF_CHILDREN_FOR_TRIG;
     } else {
-        return 0;
+        return 0; //jesli nie zwroc 0
     }
 }
 
 
 std::vector<std::string> format(const std::string& sFormula) {
-    std::vector<std::string> vFormula;
-    std::string sTemp;
-    for (char c : sFormula) {
-        if (c == ' ') {
-            if (!sTemp.empty()) {
-                vFormula.push_back(sTemp);
-                sTemp = "";
+    std::vector<std::string> vFormula; //wektor stringow
+    std::string sTemp; //tymczasowy string
+    for (char c : sFormula) { //dla kazdego znaku w stringu
+        if (c == ' ') { //jesli znak jest spacja
+            if (!sTemp.empty()) { //jesli string nie jest pusty
+                vFormula.push_back(sTemp); //dodaj string do wektora
+                sTemp = ""; //wyczysc string
             }
-        } else if (isOperator(std::string(1, c))) {
-            if (!sTemp.empty()) {
-                vFormula.push_back(sTemp);
-                sTemp = "";
+        } else if (isOperator(std::string(1, c))) { //jesli znak jest operatorem
+            if (!sTemp.empty()) { //jesli string nie jest pusty
+                vFormula.push_back(sTemp); //dodaj string do wektora
+                sTemp = ""; //wyczysc string
             }
-            vFormula.push_back(std::string(1, c));
+            vFormula.push_back(std::string(1, c)); //dodaj operator do wektora
         } else {
-            sTemp += c;
+            sTemp += c; //dodaj znak do stringu
         }
     }
-    if (!sTemp.empty()) {
-        vFormula.push_back(sTemp);
+    if (!sTemp.empty()) { //jesli string nie jest pusty
+        vFormula.push_back(sTemp); //dodaj string do wektora
     }
-    return vFormula;
+    return vFormula; //zwroc wektor
 }
 
 bool checkIfOnlyNumbers(const std::vector<std::string>& formula) {
 
-    for (const std::string &str: formula) if (!checkIfNumber(str)) return false;
+    for (const std::string &str: formula) if (!isNumber(str)) return false; //jesli string nie jest liczba zwroc false
 
-    return true;
+    return true; //jesli wszystkie stringi sa liczbami zwroc true
 }
 
-bool checkIfNumber(std::string sValue) {
-    for (char c: sValue) {
-        if (!isdigit(c) || (sValue[0] == '0' && sValue.size() > 1)) {
-            return false;
+bool isNumber(std::string sValue) {
+    for (char c: sValue) { //dla kazdego znaku w stringu
+        if (!isdigit(c) || (sValue[0] == '0' && sValue.size() > 1)) { //jesli znak nie jest cyfra lub pierwszy znak jest 0 i string ma wiecej niz 1 znak
+            return false; //zwroc false
         }
     }
     return true;
 }
 
-bool checkIfVariable(std::string sValue) {
-    if (isalpha(sValue[0])) return true;
-    return false;
+bool isVariable(std::string sValue) {
+    if (isalpha(sValue[0])) return true; //jesli pierwszy znak jest litera zwroc true
+    return false; //jesli nie zwroc false
 }
 
-bool checkIfPN(std::vector<std::string> formula) {
-    std::stack<int> s;
-    for (auto token = formula.rbegin(); token != formula.rend(); ++token) {
-        if (isArthOperator(*token)) {
-            if (s.size() < 2) return false;
-            s.pop();
+bool isPN(std::vector<std::string> formula) {
+    std::stack<int> s; //stos intow
+    for (auto token = formula.rbegin(); token != formula.rend(); ++token) { //dla kazdego elementu wektora od konca
+        if (isArthOperator(*token)) { //jesli element jest operatorem arytmetycznym
+            if (s.size() < 2) return false; //jesli stos ma mniej niz 2 elementy zwroc false
+            s.pop(); //usun element ze stosu
 
-        } else if (isTrigOperator(*token)) {
-            if (s.empty()) return false;
+        } else if (isTrigOperator(*token)) { //jesli element jest operatorem trygonometrycznym
+            if (s.empty()) return false; //jesli stos jest pusty zwroc false
 
-        } else if (checkIfNumber(*token) || checkIfVariable(*token)) {
-            s.push(1);
+        } else if (isNumber(*token) || isVariable(*token)) { //jesli element jest liczba lub zmienna
+            s.push(1); //dodaj 1 na stos
 
-        } else {
-            return false;
+        } else { //jesli element nie jest ani operatorem ani liczba ani zmienna
+            return false; //zwroc false
         }
     }
-    return s.size() == 1;
+    return s.size() == 1; //jesli stos ma 1 element zwroc true
 }

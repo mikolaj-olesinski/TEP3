@@ -6,9 +6,9 @@
 
 void UI(){
     cTree Tree;
-    std::string line;
-    std::string command;
-    std::string rest;
+    std::string line; // wczytana linia
+    std::string command; // komenda
+    std::string rest; // reszta linii po komendzie
 
     std::cout << "----------------------------------------------------" << std::endl;
     std::cout << "Dostepne komendy:" << std::endl;
@@ -27,8 +27,8 @@ void UI(){
 
         rest = "";
         std::cout << "Podaj komende: ";
-        std::getline(std::cin, line);
-        std::istringstream iss(line);
+        std::getline(std::cin, line); // wczytanie calej linii
+        std::istringstream iss(line); // utworzenie strumienia z linii
 
 
         if (iss >> command) {
@@ -40,8 +40,8 @@ void UI(){
 
         if (command == "enter") {
             std::vector<std::string> formula = format(rest);
-            if (checkIfPN(formula)){
-                Tree = enter(formula); //TODO zmienic
+            if (isPN(formula)){
+                Tree.enter(formula);
                 std::cout << "Dodano drzewo " << std::endl;
             } else std::cout << "Wpisano zla formule" << std::endl;
 
@@ -68,7 +68,7 @@ void UI(){
 
         } else if (command == "join") {
             std::vector<std::string> formula = format(rest);
-            if (checkIfPN(formula)){
+            if (isPN(formula)){
                 Tree.join(formula);
                 std::cout << "dolaczono drzewo " << std::endl;
             } else std::cout << "Wpisano zla formule" << std::endl;

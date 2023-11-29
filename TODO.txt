@@ -1,8 +1,6 @@
 
 //KROTKIE TODO
-//TODO zrozumiec destruktory w Node
-//TODO zrozumiec getLeavesAtDepth itd
-//TODO zrozumiec to UI wczytywanie
+
 //TODO zamiast enter i join mozemy stworzyc add z punktem startowym
 //TODO dac warunek ze jak nie ma nic w drzewie to nie wypisuje
 
@@ -13,11 +11,8 @@
 
 //DLUGIE TODO
 //TODO komentarze
-//TODO zmienic wyswieltaniew UI
 
-//MOZE TODO
 
-//zmienic bledy na tokeny
 
 
 
@@ -30,6 +25,10 @@
 
 //CO DZIALA
 
+//TODO zrozumiec destruktory w Node
+//TODO zrozumiec getLeavesAtDepth itd
+//TODO zrozumiec to UI wczytywanie
+//TODO zmienic wyswieltaniew UI
 //TODO konstruktory destruktory
 //TODO dawanie zmiennych i ich wartosci
 //TODO wpisywanie do konsoli

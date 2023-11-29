@@ -177,6 +177,30 @@ cTree/cTree.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TEP3.dir/build.make CMakeFiles/TEP3.dir/cTree/cTree.cpp.s
 .PHONY : cTree/cTree.cpp.s
 
+cTree/cTreeHelp.o: cTree/cTreeHelp.cpp.o
+.PHONY : cTree/cTreeHelp.o
+
+# target to build an object file
+cTree/cTreeHelp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TEP3.dir/build.make CMakeFiles/TEP3.dir/cTree/cTreeHelp.cpp.o
+.PHONY : cTree/cTreeHelp.cpp.o
+
+cTree/cTreeHelp.i: cTree/cTreeHelp.cpp.i
+.PHONY : cTree/cTreeHelp.i
+
+# target to preprocess a source file
+cTree/cTreeHelp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TEP3.dir/build.make CMakeFiles/TEP3.dir/cTree/cTreeHelp.cpp.i
+.PHONY : cTree/cTreeHelp.cpp.i
+
+cTree/cTreeHelp.s: cTree/cTreeHelp.cpp.s
+.PHONY : cTree/cTreeHelp.s
+
+# target to generate assembly for a file
+cTree/cTreeHelp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TEP3.dir/build.make CMakeFiles/TEP3.dir/cTree/cTreeHelp.cpp.s
+.PHONY : cTree/cTreeHelp.cpp.s
+
 help-functions-and-constants/UI.o: help-functions-and-constants/UI.cpp.o
 .PHONY : help-functions-and-constants/UI.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... cTree/cTree.o"
 	@echo "... cTree/cTree.i"
 	@echo "... cTree/cTree.s"
+	@echo "... cTree/cTreeHelp.o"
+	@echo "... cTree/cTreeHelp.i"
+	@echo "... cTree/cTreeHelp.s"
 	@echo "... help-functions-and-constants/UI.o"
 	@echo "... help-functions-and-constants/UI.i"
 	@echo "... help-functions-and-constants/UI.s"

@@ -6,23 +6,22 @@
 
 
 class cNode {
-public:
-
-    cNode();
-    cNode(std::string sValue);
-    cNode(const cNode &other);
-    ~cNode();
-
-
-    std::vector<cNode*>* vChildren;
-    cNode* CParent; //TODO zmienic nazwe na chyba vParent
-    std::string sValue;
-
-    void cAddtoNode(cNode &newChild);
-
-    friend class cTree;
 
 private:
+
+    cNode(); //konstruktor prywany
+    cNode(std::string sValue); //konstruktor z parametrem
+    cNode(const cNode &other); //konstruktor kopiujacy
+    ~cNode(); //destruktor
+
+
+    std::vector<cNode*>* vChildren; //wektor dzieci
+    cNode* cParent; //wskaznik na rodzica
+    std::string sValue; //wartosc wezla
+
+    void cAddtoNode(cNode &newChild); //dodaje wezel do wektora dzieci
+
+    friend class cTree;
 
 };
 

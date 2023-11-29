@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TEP3.dir/cNode/cNode.cpp.o.d"
   "CMakeFiles/TEP3.dir/cTree/cTree.cpp.o"
   "CMakeFiles/TEP3.dir/cTree/cTree.cpp.o.d"
+  "CMakeFiles/TEP3.dir/cTree/cTreeHelp.cpp.o"
+  "CMakeFiles/TEP3.dir/cTree/cTreeHelp.cpp.o.d"
   "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.o"
   "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.o.d"
   "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.o"

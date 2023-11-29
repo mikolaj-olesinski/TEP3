@@ -88,6 +88,9 @@
 		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP3/cTree/cTree.h">
 			<Option target="TEP3"/>
 		</Unit>
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP3/cTree/cTreeHelp.cpp">
+			<Option target="TEP3"/>
+		</Unit>
 		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/UI.cpp">
 			<Option target="TEP3"/>
 		</Unit>
