@@ -1,0 +1,43 @@
+
+//KROTKIE TODO
+//TODO zrozumiec destruktory w Node
+//TODO zrozumiec getLeavesAtDepth itd
+//TODO zrozumiec to UI wczytywanie
+//TODO zamiast enter i join mozemy stworzyc add z punktem startowym
+//TODO dac warunek ze jak nie ma nic w drzewie to nie wypisuje
+
+//SREDNIE TODO
+
+//TODO moze zmienic compute
+//TODO moze w + zrobic const
+
+//DLUGIE TODO
+//TODO komentarze
+
+
+//MOZE TODO
+
+//zmienic bledy na tokeny
+
+
+
+
+
+
+
+
+
+
+//CO DZIALA
+
+//TODO konstruktory destruktory
+//TODO dawanie zmiennych i ich wartosci
+//TODO wpisywanie do konsoli
+//TODO obliczanie za pomoca drzewa
+//TODO ogarniecie z sinx i cosx
+//TODO ladne printowanie drzewa
+//TODO dodawanie drzew
+//TODO ogarniecie tego size w enter i join
+//TODO operator +
+
+
