@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "TEP3.exe"
-		},
-		{
-			"path" : "TEP3.pdb"
+			"path" : "TEP3"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -fcolor-diagnostics"
 				}
 			],
 			"language" : "CXX",
@@ -72,16 +69,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "TEP3",
-	"nameOnDisk" : "TEP3.exe",
+	"nameOnDisk" : "TEP3",
 	"paths" : 
 	{
 		"build" : ".",
