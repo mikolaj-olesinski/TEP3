@@ -13,7 +13,7 @@ void UI(){
 
     while (true) {
 
-
+        rest = "";
         std::cout << "Podaj komende: ";
         std::getline(std::cin, line);
         std::istringstream iss(line);
