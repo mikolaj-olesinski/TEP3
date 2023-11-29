@@ -739,6 +739,8 @@ CMakeFiles/TEP3.dir/cTree/cTree.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__functional/unary_negate.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/../cNode/cNode.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/../cNode/../help-functions-and-constants/functions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/deque \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/../cNode/../help-functions-and-constants/../help-functions-and-constants/stale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/set \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree \

@@ -795,6 +795,9 @@ CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.o: \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/../cTree/cTree.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/../cTree/../cNode/cNode.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/../cTree/../cNode/../help-functions-and-constants/functions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/deque \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/../help-functions-and-constants/stale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/set \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/map

@@ -36,25 +36,33 @@ public:
 
     cTree enter( std::vector<std::string> formula);
 
+    void printBT() const;
+
+    std::vector<std::string> getPrefix() const;
+
 private:
     cNode * findRightLeaf() const;
     cNode * findRightLeaf(cTree &tree) const;
     void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables) const;
     void replaceVariableRecursive(cNode* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables);
 
+    static std::vector<cNode*> getLeavesAtLowestLevel(cNode* node);
+    static std::vector<std::vector<cNode*>> segregateLeavesByParent(const std::vector<cNode*>& leaves);
+    static int maxDepth(cNode* root);
+    static void printBTRecursiveHelp(const std::string& prefix, cNode* node, bool isLeft);
+
+    static std::vector<std::string> getPrefixRecursiveHelp(cNode *node);
 };
 
-void printBT(const std::string& prefix, cNode* node, bool isLeft);
-void printBT(cNode* root);
 
-std::vector<std::string> printPrefix(cNode* node);
+
+
 
 cTree enter( std::vector<std::string> formula);
 
-int maxDepth(cNode* node);
+
 void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leavesByParent);
-std::vector<cNode*> getLeavesAtLowestLevel(cNode* node);
-std::vector<std::vector<cNode*>> segregateLeavesByParent(const std::vector<cNode*>& leaves);
+
 
 
 

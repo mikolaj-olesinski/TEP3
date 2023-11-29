@@ -792,9 +792,12 @@ CMakeFiles/TEP3.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/cstdarg \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/functions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/deque \
   /Users/mikolajolesinski/CLionProjects/TEP3/help-functions-and-constants/../help-functions-and-constants/stale.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/cTree.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/../cNode/cNode.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cTree/../cNode/../help-functions-and-constants/functions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/set \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__tree \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/map

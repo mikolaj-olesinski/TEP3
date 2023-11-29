@@ -138,7 +138,7 @@ cTree cTree::join(cTree &other) {
 }
 
 
-void printBT(const std::string &prefix, cNode *node, bool isLeft) {
+void cTree::printBTRecursiveHelp(const std::string &prefix, cNode *node, bool isLeft) {
     if (node != nullptr) {
         std::cout << prefix;
 
@@ -150,27 +150,27 @@ void printBT(const std::string &prefix, cNode *node, bool isLeft) {
         // print children
         if (node->vChildren != nullptr && !node->vChildren->empty()) {
             for (size_t i = 0; i < node->vChildren->size(); ++i) {
-                printBT(prefix + (isLeft ? "|   " : "    "), (*node->vChildren)[i],
-                        i < node->vChildren->size() - 1);
+                cTree::printBTRecursiveHelp(prefix + (isLeft ? "|   " : "    "), (*node->vChildren)[i],
+                                     i < node->vChildren->size() - 1);
             }
         }
     }
 }
 
 
-void printBT(cNode *root) {
-    if (root != nullptr) printBT("", root, false);
+void cTree::printBT() const {
+    cTree::printBTRecursiveHelp("", cRoot, false);
 
 }
 
-std::vector<std::string> printPrefix(cNode *node) { //TODO zrozumuec i zmienic
+std::vector<std::string> cTree::getPrefixRecursiveHelp(cNode *node) { //TODO zrozumuec i zmienic
     std::vector<std::string> prefix;
     if (node != nullptr) {
         prefix.push_back(node->sValue);
 
         if (node->vChildren != nullptr && !node->vChildren->empty()) {
             for (size_t i = 0; i < node->vChildren->size(); ++i) {
-                std::vector<std::string> temp = printPrefix((*node->vChildren)[i]);
+                std::vector<std::string> temp = getPrefixRecursiveHelp((*node->vChildren)[i]);
                 prefix.insert(prefix.end(), temp.begin(), temp.end());
             }
         }
@@ -179,14 +179,18 @@ std::vector<std::string> printPrefix(cNode *node) { //TODO zrozumuec i zmienic
 }
 
 
-int maxDepth(cNode* node) {
-    if (!node)
+std::vector<std::string> cTree::getPrefix() const{
+    return getPrefixRecursiveHelp(cRoot);
+}
+
+int cTree::maxDepth(cNode* root) {
+    if (!root)
         return 0;
 
     int maxChildDepth = 0;
 
-    for (cNode* child : *(node->vChildren)) {
-        int childDepth = maxDepth(child);
+    for (cNode* child : *(root->vChildren)) {
+        int childDepth = cTree::maxDepth(child);
         maxChildDepth = std::max(maxChildDepth, childDepth);
     }
 
@@ -208,9 +212,9 @@ void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vecto
 }
 
 
-std::vector<cNode*> getLeavesAtLowestLevel(cNode* root) {
+std::vector<cNode*> cTree::getLeavesAtLowestLevel(cNode* root) {
     std::vector<cNode*> leaves;
-    int iMaxDepth = maxDepth(root);
+    int iMaxDepth = cTree::maxDepth(root);
 
     if (iMaxDepth > 0) {
         getLeavesAtDepth(root, 0, iMaxDepth - 1, leaves); // targetDepth = maxDepth - 1
@@ -220,7 +224,7 @@ std::vector<cNode*> getLeavesAtLowestLevel(cNode* root) {
 }
 
 
-std::vector<std::vector<cNode*>> segregateLeavesByParent(const std::vector<cNode*>& leaves) {
+std::vector<std::vector<cNode*>> cTree::segregateLeavesByParent(const std::vector<cNode*>& leaves) {
     std::vector<std::vector<cNode*>> segregatedLeaves;
 
     std::map<cNode*, std::vector<cNode*>> leavesByParent;
@@ -251,8 +255,8 @@ int cTree::compute( std::vector<std::string> formula){
 
     while (Tree->cRoot != nullptr) {
 
-        std::vector<cNode *> leavesAtLowestLevel = getLeavesAtLowestLevel(Tree->cRoot);
-        std::vector<std::vector<cNode *>> segregatedLeaves = segregateLeavesByParent(leavesAtLowestLevel);
+        std::vector<cNode *> leavesAtLowestLevel = cTree::getLeavesAtLowestLevel(Tree->cRoot);
+        std::vector<std::vector<cNode *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel);
 
         for (const auto &leaves: segregatedLeaves) {
             int newValue = (leaves[0]->CParent->sValue == "*") ? 1 : 0;

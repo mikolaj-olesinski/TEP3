@@ -7,9 +7,21 @@
 void UI(){
     cTree Tree;
     std::string line;
-    std::vector<std::string> formula;
     std::string command;
     std::string rest;
+
+    std::cout << "----------------------------------------------------" << std::endl;
+    std::cout << "Dostepne komendy:" << std::endl;
+    std::cout << "enter <formula> - dodaje drzewo" << std::endl;
+    std::cout << "printTree - wypisuje drzewo" << std::endl;
+    std::cout << "print - wypisuje formule" << std::endl;
+    std::cout << "comp <arg1> <arg2> ... - oblicza wartosc formuly" << std::endl;
+    std::cout << "join <formula> - dolacza drzewo" << std::endl;
+    std::cout << "vars - wypisuje zmienne" << std::endl;
+    std::cout << "help - wypisuje dostepne komendy" << std::endl;
+    std::cout << "exit - wychodzi z programu" << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
 
     while (true) {
 
@@ -27,25 +39,25 @@ void UI(){
         }
 
         if (command == "enter") {
-            formula = format(rest);
+            std::vector<std::string> formula = format(rest);
             if (checkIfPN(formula)){
-                Tree = enter(formula);
+                Tree = enter(formula); //TODO zmienic
                 std::cout << "Dodano drzewo " << std::endl;
             } else std::cout << "Wpisano zla formule" << std::endl;
 
 
         } else if (command == "printTree") {
-            printBT(Tree.cRoot);
+            Tree.printBT();
 
-        } else if (command == "printPrefix") {
-            std::vector<std::string> formula = printPrefix(Tree.cRoot);
-            for (std::string s : formula) {
+        } else if (command == "print") {
+            std::vector<std::string> formula = Tree.getPrefix();
+            for (const auto& s : formula) {
                 std::cout << s << " ";
             }
             std::cout << std::endl;
 
         }else if (command == "comp") {
-            formula = format(rest);
+            std::vector<std::string> formula = format(rest);
             if (formula.size() != Tree.findVariables().size()) std::cout << "wpisano zla ilosc argumentow" << std::endl;
             else if (!checkIfOnlyNumbers(formula)) std::cout << "wpisz tylko liczby jako argumenty" << std::endl;
             else {
@@ -55,7 +67,7 @@ void UI(){
 
 
         } else if (command == "join") {
-
+            std::vector<std::string> formula = format(rest);
             if (checkIfPN(formula)){
                 Tree.join(formula);
                 std::cout << "dolaczono drzewo " << std::endl;
@@ -65,17 +77,32 @@ void UI(){
         } else if (command == "vars"){
             std::set<std::string> vars = Tree.findVariables();
             std::cout << "Znalezione zmienne: ";
-            for (auto it = vars.begin(); it != vars.end(); ++it) {
-                std::cout << *it << " "; //TODO do zmiany
+            for (const auto& s : vars) {
+                std::cout << s << " ";
             }
             std::cout << std::endl;
-        }
-        else if (command == "exit") {
+
+        }else if (command == "help") {
+            std::cout << "----------------------------------------------------" << std::endl;
+            std::cout << "Dostepne komendy:" << std::endl;
+            std::cout << "enter <formula> - dodaje drzewo" << std::endl;
+            std::cout << "printTree - wypisuje drzewo" << std::endl;
+            std::cout << "print - wypisuje formule" << std::endl;
+            std::cout << "comp <arg1> <arg2> ... - oblicza wartosc formuly" << std::endl;
+            std::cout << "join <formula> - dolacza drzewo" << std::endl;
+            std::cout << "vars - wypisuje zmienne" << std::endl;
+            std::cout << "help - wypisuje dostepne komendy" << std::endl;
+            std::cout << "exit - wychodzi z programu" << std::endl;
+            std::cout << "----------------------------------------------------" << std::endl;
+
+        }else if (command == "exit") {
             std::cout << "Wyjscie z programu." << std::endl;
             break;
         } else {
             std::cout << "Nieznana komenda." << std::endl;
         }
+
+        std::cout << std::endl;
     }
 
 }

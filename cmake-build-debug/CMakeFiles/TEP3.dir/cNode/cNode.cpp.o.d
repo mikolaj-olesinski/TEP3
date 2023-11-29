@@ -738,4 +738,6 @@ CMakeFiles/TEP3.dir/cNode/cNode.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__ios/fpos.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__string/extern_template_lists.h \
   /Users/mikolajolesinski/CLionProjects/TEP3/cNode/../help-functions-and-constants/functions.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/deque \
   /Users/mikolajolesinski/CLionProjects/TEP3/cNode/../help-functions-and-constants/../help-functions-and-constants/stale.h
