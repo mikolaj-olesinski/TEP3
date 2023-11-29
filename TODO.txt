@@ -13,7 +13,7 @@
 
 //DLUGIE TODO
 //TODO komentarze
-
+//TODO zmienic wyswieltaniew UI
 
 //MOZE TODO
 

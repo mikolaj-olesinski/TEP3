@@ -1,10 +1,4 @@
 #include "cTree.h"
-#include <iostream>
-#include <map>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <algorithm>
 
 
 cTree::cTree(cNode &newRoot) {
@@ -60,6 +54,10 @@ cTree enter( std::vector<std::string> formula){
 
     return *Tree;
 
+}
+
+cTree cTree::enter(std::vector<std::string> formula) {
+    return *this = enter(formula);
 }
 
 
@@ -160,9 +158,24 @@ void printBT(const std::string &prefix, cNode *node, bool isLeft) {
 }
 
 
-void printBT(cNode *node) {
-    if (node != nullptr) printBT("", node, false);
+void printBT(cNode *root) {
+    if (root != nullptr) printBT("", root, false);
 
+}
+
+std::vector<std::string> printPrefix(cNode *node) { //TODO zrozumuec i zmienic
+    std::vector<std::string> prefix;
+    if (node != nullptr) {
+        prefix.push_back(node->sValue);
+
+        if (node->vChildren != nullptr && !node->vChildren->empty()) {
+            for (size_t i = 0; i < node->vChildren->size(); ++i) {
+                std::vector<std::string> temp = printPrefix((*node->vChildren)[i]);
+                prefix.insert(prefix.end(), temp.begin(), temp.end());
+            }
+        }
+    }
+    return prefix;
 }
 
 
@@ -170,12 +183,15 @@ int maxDepth(cNode* node) {
     if (!node)
         return 0;
 
-    int leftDepth = maxDepth(node->vChildren->size() > 0 ? node->vChildren->at(0) : nullptr);
-    int rightDepth = maxDepth(node->vChildren->size() > 1 ? node->vChildren->at(1) : nullptr);
+    int maxChildDepth = 0;
 
-    return std::max(leftDepth, rightDepth) + 1;
+    for (cNode* child : *(node->vChildren)) {
+        int childDepth = maxDepth(child);
+        maxChildDepth = std::max(maxChildDepth, childDepth);
+    }
+
+    return maxChildDepth + 1;
 }
-
 
 void getLeavesAtDepth(cNode* node, int currentDepth, int targetDepth, std::vector<cNode*>& leaves) {
     if (!node)
@@ -235,8 +251,8 @@ int cTree::compute( std::vector<std::string> formula){
 
     while (Tree->cRoot != nullptr) {
 
-        std::vector<cNode *> leaves = getLeavesAtLowestLevel(Tree->cRoot);
-        std::vector<std::vector<cNode *>> segregatedLeaves = segregateLeavesByParent(leaves);
+        std::vector<cNode *> leavesAtLowestLevel = getLeavesAtLowestLevel(Tree->cRoot);
+        std::vector<std::vector<cNode *>> segregatedLeaves = segregateLeavesByParent(leavesAtLowestLevel);
 
         for (const auto &leaves: segregatedLeaves) {
             int newValue = (leaves[0]->CParent->sValue == "*") ? 1 : 0;
@@ -244,7 +260,6 @@ int cTree::compute( std::vector<std::string> formula){
             for (const auto &leaf: leaves) {
                 std::string parentOperator = leaf->CParent->sValue;
 
-                //TODO zmienic na zmienna stoi jakby int czaisz
 
                 if (parentOperator == "+") {
                     newValue += std::stoi(leaf->sValue);
@@ -289,7 +304,7 @@ cTree cTree::operator+(cTree& other){
 }
 
 
-void cTree::findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables)  {
+void cTree::findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables)  const{
     if (currentNode == nullptr) {
         return;
     }
@@ -300,14 +315,14 @@ void cTree::findVariablesRecursive(cNode* currentNode, std::set<std::string>& va
     }
 
     // Recursively visit children
-    if (currentNode->vChildren != nullptr) {
-        for (cNode* child : *(currentNode->vChildren)) {
-            findVariablesRecursive(child, variables);
-        }
+    for (cNode* child : *(currentNode->vChildren)) {
+        findVariablesRecursive(child, variables);
     }
+
 }
 
-std::set<std::string> cTree::findVariables() {
+
+std::set<std::string> cTree::findVariables() const{
     std::set<std::string> variables;
     findVariablesRecursive(cRoot, variables);
     return variables;

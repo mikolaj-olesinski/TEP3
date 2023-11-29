@@ -1,34 +1,33 @@
-#include <stack>
 #include "functions.h"
 
-bool isOperator(std::string sValue) {
-    for(int i = 0; i < OPERATORS_SIZE; i++) {
-        if (sValue == OPERATORS[i]) {
+bool isOperator(const std::string& sValue) {
+    for(const auto & i : OPERATORS) {
+        if (sValue == i) {
             return true;
         }
     }
     return false;
 }
 
-bool isArthOperator(std::string sValue) {
-    for(int i = 0; i < ARTH_OPERATORS_SIZE; i++) {
-        if (sValue == ARTH_OPERATORS[i]) {
+bool isArthOperator(const std::string& sValue) {
+    for(const auto & i : ARTH_OPERATORS) {
+        if (sValue == i) {
             return true;
         }
     }
     return false;
 }
 
-bool isTrigOperator(std::string sValue) {
-    for(int i = 0; i < TRIG_OPERATORS_SIZE; i++) {
-        if (sValue == TRIG_OPERATORS[i]) {
+bool isTrigOperator(const std::string& sValue) {
+    for(const auto & i : TRIG_OPERATORS) {
+        if (sValue == i) {
             return true;
         }
     }
     return false;
 }
 
-int fMaxAmountOfChildren(std::string sValue) {
+int fMaxAmountOfChildren(const std::string& sValue) {
     if (isArthOperator(sValue)) {
         return MAX_AMOUNT_OF_CHILDREN_FOR_ARTH;
     } else if (isTrigOperator(sValue)) {
@@ -38,22 +37,18 @@ int fMaxAmountOfChildren(std::string sValue) {
     }
 }
 
-bool check(std::string sFormula) {
-    //TODO zrobic
-    return true;
-}
 
-std::vector<std::string> format(std::string sFormula) {
+std::vector<std::string> format(const std::string& sFormula) {
     std::vector<std::string> vFormula;
-    std::string sTemp = "";
+    std::string sTemp;
     for (char c : sFormula) {
         if (c == ' ') {
-            if (sTemp != "") {
+            if (!sTemp.empty()) {
                 vFormula.push_back(sTemp);
                 sTemp = "";
             }
         } else if (isOperator(std::string(1, c))) {
-            if (sTemp != "") {
+            if (!sTemp.empty()) {
                 vFormula.push_back(sTemp);
                 sTemp = "";
             }
@@ -62,13 +57,13 @@ std::vector<std::string> format(std::string sFormula) {
             sTemp += c;
         }
     }
-    if (sTemp != "") {
+    if (!sTemp.empty()) {
         vFormula.push_back(sTemp);
     }
     return vFormula;
 }
 
-bool checkIfOnlyNumbers(const std::vector<std::string> formula) {
+bool checkIfOnlyNumbers(const std::vector<std::string>& formula) {
 
     for (const std::string &str: formula) if (!checkIfNumber(str)) return false;
 
@@ -97,7 +92,7 @@ bool checkIfPN(std::vector<std::string> formula) {
             s.pop();
 
         } else if (isTrigOperator(*token)) {
-            if (s.size() < 1) return false;
+            if (s.empty()) return false;
 
         } else if (checkIfNumber(*token) || checkIfVariable(*token)) {
             s.push(1);

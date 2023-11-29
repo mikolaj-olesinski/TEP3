@@ -23,7 +23,7 @@ void UI(){
             std::getline(iss >> std::ws, rest);
         } else {
             std::cout << "Blad podczas wczytywania komendy." << std::endl;
-            continue; // Ponowne wczytanie komendy
+            continue;
         }
 
         if (command == "enter") {
@@ -34,10 +34,17 @@ void UI(){
             } else std::cout << "Wpisano zla formule" << std::endl;
 
 
-        } else if (command == "print") {
+        } else if (command == "printTree") {
             printBT(Tree.cRoot);
 
-        } else if (command == "comp") {
+        } else if (command == "printPrefix") {
+            std::vector<std::string> formula = printPrefix(Tree.cRoot);
+            for (std::string s : formula) {
+                std::cout << s << " ";
+            }
+            std::cout << std::endl;
+
+        }else if (command == "comp") {
             formula = format(rest);
             if (formula.size() != Tree.findVariables().size()) std::cout << "wpisano zla ilosc argumentow" << std::endl;
             else if (!checkIfOnlyNumbers(formula)) std::cout << "wpisz tylko liczby jako argumenty" << std::endl;
