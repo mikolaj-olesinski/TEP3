@@ -23,6 +23,8 @@ public:
 
     cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
     cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
+    cTree& join(const std::vector<std::string>& formula); //funkcja laczaca 2 drzewa przyjmujaca jako argument wektor stringow
+
     int compute(const std::vector<std::string> formula) const; //funkcja obliczajaca wartosc drzewa
 
     cTree& operator=(const cTree& other); //operator przypisania

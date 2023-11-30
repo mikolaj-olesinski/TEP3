@@ -69,7 +69,7 @@ void UI(){
         } else if (command == "join") {
             std::vector<std::string> formula = format(rest);
             if (isPN(formula)){
-                Tree.join((new cTree)->enter(formula));
+                Tree.join(formula);
                 std::cout << "dolaczono drzewo " << std::endl;
             } else std::cout << "Wpisano zla formule" << std::endl;
 

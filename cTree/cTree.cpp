@@ -77,6 +77,11 @@ cTree& cTree::join(const cTree& other) {
     return *this; // Zwracamy nowe drzewo
 }
 
+cTree &cTree::join(const std::vector<std::string> &formula) {
+    return join((new cTree)->enter(formula)); //tworzymy nowe drzewo z wektora stringow i laczymy je z aktualnym drzewem
+}
+
+
 
 int cTree::compute(const std::vector<std::string> formula) const{
 

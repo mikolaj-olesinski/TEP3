@@ -134,4 +134,3 @@ std::vector<std::string> cTree::getPrefixRecursiveHelp(cNode *node) {
     }
     return prefix; //zwracamy wektor prefiksu
 }
-
