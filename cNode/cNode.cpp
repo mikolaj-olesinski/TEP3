@@ -1,6 +1,4 @@
-
 #include "cNode.h"
-#include <algorithm>
 
 cNode::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue("") {}
 

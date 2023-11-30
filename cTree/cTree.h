@@ -21,17 +21,15 @@ public:
     cTree(); //konstruktor domyslny
     ~cTree(); //destruktor
 
-
-    cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
     cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
-    int compute(std::vector<std::string> formula) const; //funkcja obliczajaca wartosc drzewa
+    cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
+    int compute(const std::vector<std::string> formula) const; //funkcja obliczajaca wartosc drzewa
 
     cTree& operator=(const cTree& other); //operator przypisania
     cTree operator+(const cTree& other) const; //operator dodawania
 
     std::set<std::string> findVariables() const; //funkcja znajdujaca zmienne w drzewie
     void findVariablesAndReplace(std::vector<std::string> replaceValues); //funkcja znajdujaca zmienne w drzewie i zamieniajaca je na wartosci z wektora
-
 
     void printBT() const; //funkcja wypisujaca drzewo w formie graficznej
 
@@ -42,9 +40,9 @@ private:
 
     cNode *cRoot; //korzen drzewa
 
-    cNode * findRightLeafParent() const; //funkcja znajdujaca prawy lisc
-    void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables) const; //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru
-    void replaceVariableRecursive(cNode* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji
+    cNode* findRightLeafParent() const; //funkcja znajdujaca prawy lisc
+    static void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables); //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru
+    static void replaceVariableRecursive(cNode* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji
 
     static std::vector<cNode*> getLeavesAtLowestLevel(cNode* node); //funkcja znajdujaca liscie na najnizszym poziomie
     static std::vector<std::vector<cNode*>> segregateLeavesByParent(const std::vector<cNode*>& leaves); //funkcja segregujaca liscie po rodzicach

@@ -2,6 +2,7 @@
 #define TEP3_CNODE_H
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "../help-functions-and-constants/functions.h"
 
 
