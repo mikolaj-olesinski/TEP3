@@ -22,9 +22,8 @@ public:
     ~cTree(); //destruktor
 
 
-    cTree& join( std::vector<std::string> formula); //funkcja laczaca 2 drzewa przyjmujaca jako argument wektor stringow
-    cTree join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
-
+    cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
+    cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
     int compute(std::vector<std::string> formula) const; //funkcja obliczajaca wartosc drzewa
 
     cTree& operator=(const cTree& other); //operator przypisania
@@ -33,7 +32,6 @@ public:
     std::set<std::string> findVariables() const; //funkcja znajdujaca zmienne w drzewie
     void findVariablesAndReplace(std::vector<std::string> replaceValues); //funkcja znajdujaca zmienne w drzewie i zamieniajaca je na wartosci z wektora
 
-    cTree& enter( std::vector<std::string> formula); //funkcja tworzaca drzewo z wektora stringow
 
     void printBT() const; //funkcja wypisujaca drzewo w formie graficznej
 
@@ -44,7 +42,7 @@ private:
 
     cNode *cRoot; //korzen drzewa
 
-    cNode * findRightLeaf() const; //funkcja znajdujaca prawy lisc
+    cNode * findRightLeafParent() const; //funkcja znajdujaca prawy lisc
     void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables) const; //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru
     void replaceVariableRecursive(cNode* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji
 

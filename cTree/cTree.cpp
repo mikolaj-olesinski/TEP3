@@ -23,7 +23,9 @@ cTree::~cTree() {
     delete cRoot; //usuwamy pamiec po Root w destruktorze cNode usuwa pamiec po wszystkich dzieciach
 }
 
-cTree& cTree::enter( std::vector<std::string> formula){
+
+
+cTree& cTree::enter(const std::vector<std::string>& formula) {
     cRoot = new cNode(formula[0]); //tworzymy nowy obiekt cNode z pierwszym elementem formuly
     cNode *CurrentNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres aktualnego wezla na ktorym dzialamy
     CurrentNode = cRoot; //przypisujemy adres Roota do CurrentNode
@@ -61,71 +63,26 @@ cTree& cTree::enter( std::vector<std::string> formula){
 
 
     return *this; //zwracamy obiekt cTree
-
 }
 
 
-cNode* cTree::findRightLeaf() const {
+cNode* cTree::findRightLeafParent() const {
     cNode *CurrentNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres aktualnego wezla na ktorym dzialamy
     CurrentNode = cRoot; //przypisujemy adres Roota do CurrentNode
-    while (CurrentNode->vChildren->size() > 1) { //przechodzimy po drzewie az dojdziemy do liscia
-        CurrentNode = CurrentNode->vChildren->at(1); //przechodzimy na ostatnie dziecko aktualnego wezla
+    while (CurrentNode->vChildren->size() != 0) { //przechodzimy po drzewie az dojdziemy do liscia
+        CurrentNode = CurrentNode->vChildren->back(); //przechodzimy na ostatnie dziecko
     }
-
-    return CurrentNode;
+    return CurrentNode->cParent; //zwracamy rodzica liscia
 }
 
 
-cTree& cTree::join(std::vector<std::string> formula) {
-    cNode *rightLeaf = findRightLeaf(); //znajdujemy ostatni lisc drzewa z "prawej strony";
-
-    cNode *CurrentNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres aktualnego wezla na ktorym dzialamy
-    CurrentNode = rightLeaf; //przypisujemy adres Roota do CurrentNode
-    rightLeaf->sValue = formula[0]; //zmieniamy wartosc wezla na ktorym operujemy na wartosc pierwszego elementu formuly
-
-    cNode* newAddedNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres nowego wezla ktory bedziemy dodawac do drzewa
-
-    for (int i = 1; i < formula.size(); i++) { //przechodzimy po formule od drugiego elementu bo pierwszy jest juz w Root
-        newAddedNode = new cNode(formula[i]); //przypisujemy adres nowego obiektu cNode z kolejnym elementem formuly ktory bedziemy dodawac do drzewa
-
-        int maxAmountOfChildren = fMaxAmountOfChildren(
-                CurrentNode->sValue); //zmienna przechowujaca maksymalna ilosc dzieci dla danego rodzaju operatora
-
-        if (CurrentNode->vChildren->size() <
-            maxAmountOfChildren) { //sprawdzamy czy aktualny wezel ma mniej niz dana ilosc dzieci
-            CurrentNode->cAddtoNode(*newAddedNode); //jesli tak to dodajemy nowy wezel do aktualnego wezla na ktorym operujemy
-            if (isOperator(newAddedNode->sValue)) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
-                CurrentNode = newAddedNode; //przypisujemy adres nowego wezla do CurrentNode
-            }
-        } else { //jesli aktualny wezel ma juz dopuszczona dzieci to przechodzimy na jego rodzica
-            CurrentNode = CurrentNode->cParent;
-
-            maxAmountOfChildren = fMaxAmountOfChildren(
-                    CurrentNode->sValue); //zmienna przechowujaca maksymalna ilosc dzieci dla danego rodzaju operatora
-            while (CurrentNode->vChildren->size() >=
-                   maxAmountOfChildren) { //przechodzimy po drzewie az dojdziemy do wezla ktory ma mniej niz dopuszczone ilosc dzieci
-                CurrentNode = CurrentNode->cParent;
-                maxAmountOfChildren = fMaxAmountOfChildren(
-                        CurrentNode->sValue); //zmienna przechowujaca maksymalna ilosc dzieci dla danego rodzaju operatora
-            }
-
-            CurrentNode->cAddtoNode(*newAddedNode); //dodajemy nowy wezel do aktualnego wezla na ktorym operujemy
-            if (isOperator(newAddedNode->sValue)) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
-                CurrentNode = newAddedNode; //przypisujemy adres nowego wezla do CurrentNode
-            }
-        }
-    }
-
-    return *this;
-
+cTree& cTree::join(const cTree& other) {
+    cNode* rightLeafParent = findRightLeafParent(); // rodzic ostatniego liścia zwracamy rodzica bo inaczej zwracamy kopie wskaznika na liścia
+    delete rightLeafParent->vChildren->back(); // Usuwamy ostatnie dziecko rodzica ostatniego liścia
+    rightLeafParent->cAddtoNode(*other.cRoot); // Dodajemy nowe dziecko do rodzica ostatniego liścia
+    return *this; // Zwracamy nowe drzewo
 }
 
-cTree cTree::join(const cTree& other) {
-    cTree newTree(*this); // Create a copy of the current tree
-    cNode* rightLeafOther = other.findRightLeaf(); // Find the right leaf of the other tree
-    newTree.cRoot = rightLeafOther; // Assign the right leaf of the other tree as the root of the new tree
-    return newTree;
-}
 
 
 void cTree::printBTRecursiveHelp(const std::string &prefix, cNode *node, bool isLeft) {
