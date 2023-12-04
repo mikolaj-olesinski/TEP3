@@ -70,14 +70,35 @@ bool checkIfOnlyNumbers(const std::vector<std::string>& formula) {
     return true; //jesli wszystkie stringi sa liczbami zwroc true
 }
 
-bool isNumber(std::string sValue) {
-    for (char c: sValue) { //dla kazdego znaku w stringu
-        if (!isdigit(c) || (sValue[0] == '0' && sValue.size() > 1)) { //jesli znak nie jest cyfra lub pierwszy znak jest 0 i string ma wiecej niz 1 znak
-            return false; //zwroc false
+
+bool isNumber(const std::string sValue) { //TODO do zmiany moze
+    if (sValue.empty()) {
+        return false; // Pusty string nie jest liczbą
+    }
+
+    bool hasDot = false; // Flaga wskazująca, czy pojawiła się kropka
+
+    for (char c : sValue) {
+
+        if (sValue[0] == '0' && sValue.size() > 1) {
+            // Jeśli pierwszy znak to '0', a string ma więcej niż jeden znak, to jest niepoprawne
+            return false;
+        }
+
+        if (!std::isdigit(c)) {
+            // Jeśli znak nie jest cyfrą
+            if (c == '.' && !hasDot) {
+                // Jeśli to kropka i jeszcze jej nie było, to jest to akceptowalne
+                hasDot = true;
+            } else {
+                return false; // Inny niż cyfra i nieakceptowalna kropka
+            }
         }
     }
+
     return true;
 }
+
 
 bool isVariable(std::string sValue) {
     if (isalpha(sValue[0])) return true; //jesli pierwszy znak jest litera zwroc true

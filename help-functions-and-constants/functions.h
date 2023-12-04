@@ -21,3 +21,4 @@ std::vector<std::string> format(const std::string& sFormula); // formatuje strin
 void UI(); // funkcja interfejsu uzytkownika
 
 #endif
+
