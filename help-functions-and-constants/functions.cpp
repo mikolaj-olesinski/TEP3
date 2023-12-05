@@ -71,7 +71,7 @@ bool checkIfOnlyNumbers(const std::vector<std::string>& formula) {
 }
 
 
-bool isNumber(const std::string sValue) { //TODO do zmiany moze
+bool isNumber(const std::string sValue) {
     if (sValue.empty()) {
         return false; // Pusty string nie jest liczbą
     }
@@ -123,4 +123,59 @@ bool isPN(std::vector<std::string> formula) {
         }
     }
     return s.size() == 1; //jesli stos ma 1 element zwroc true
+}
+//sprawdza czy pierwszy i ostatni znak jest cudzyslowiem a w srodku sa tylko litery
+bool isStringVariable(std::string sValue) {
+    if (sValue[0] == '"' && sValue[sValue.length() - 1] == '"') { //jesli pierwszy i ostatni znak jest cudzyslowiem
+        for (int i = 1; i < sValue.length() - 1; i++) { //dla kazdego znaku w stringu
+            if (!isalpha(sValue[i])) { //jesli znak nie jest litera
+                return false; //zwroc false
+            }
+        }
+        return true; //jesli wszystkie znaki sa literami zwroc true
+    }
+    return false; //jesli pierwszy i ostatni znak nie jest cudzyslowiem zwroc false
+}
+
+bool isString(std::string sValue) {
+    if (isOperator(sValue)) return false; //jesli string jest operatorem zwroc false
+    for (char c : sValue) { //dla kazdego znaku w stringu
+        if (!isalpha(c)) { //jesli znak nie jest litera
+            return false; //zwroc false
+        }
+    }
+    return true; //jesli wszystkie znaki sa literami zwroc true
+}
+
+
+std::string subString(std::string string1, std::string string2) {
+    size_t pos = string1.rfind(string2);
+    if (pos != std::string::npos) {
+        string1.erase(pos, string2.length());
+    }
+    return string1;
+}
+
+std::string addString(std::string string1, std::string string2) {
+    return string1 + string2;
+}
+
+std::string mulString(std::string string1, std::string string2) {
+    if (!string2.empty()) {
+        char firstChar = string2[0];
+        size_t pos = string1.find(firstChar);
+        while (pos != std::string::npos) {
+            string1.replace(pos, 1, string2.substr(1));
+            pos = string1.find(firstChar, pos + string2.length() - 1);
+        }
+    }
+    return string1;
+}
+
+std::string divString(std::string string1, std::string string2) {
+    size_t pos = string1.find(string2);
+    if (pos != std::string::npos) {
+        string1.erase(pos + 1);
+    }
+    return string1;
 }

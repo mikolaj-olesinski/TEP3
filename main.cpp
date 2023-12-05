@@ -6,10 +6,10 @@ int main() {
 
     //UI();
 
-    cTree<double> tree;
-    tree.enter({"+", "1.1", "2.6"});
-    tree.join({"*", "3.2", "z"});
-    double a = tree.compute({"4.5"});
+    cTree<std::string> tree;
+    tree.enter({"+", "aaa", "bbb"});
+    tree.join({"+", "bbb", "ccc"});
+    std::string a = tree.compute({});
     std::cout << a << std::endl;
 
 
@@ -17,7 +17,7 @@ int main() {
     return 0;
 }
 
-
+//TODO dzielenie
 
 
 

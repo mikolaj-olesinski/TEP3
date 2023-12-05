@@ -48,7 +48,7 @@ cNode<int> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cP
 
 template<>
 cNode<std::string> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isNumber(value)) tValue = value; //TODO zmenic na isNumber na isString (?) no zeby nie byl zmienna ani opeartorem
+    if (isString(value)) tValue = value;
 }
 
 
@@ -106,7 +106,7 @@ std::string cNode<std::string>::sGetKnownType() const {
 
 template <typename T>
 std::string cNode<T>::sGetKnownType() const {
-    return "unknown"; //TODO za kazdym razem zwraca string zamiast unknown
+    return "unknown";
 }
 
 #endif

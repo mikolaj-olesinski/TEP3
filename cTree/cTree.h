@@ -17,22 +17,23 @@
 template <typename T>
 class cTree {
 public:
-    explicit cTree(cNode<T> &cRoot); //explicit by zapobiec niejawnej konwersji //konstruktor kopiujacy z cNode
+
     cTree(const cTree &other); //konstruktor kopiujacy
     cTree(); //konstruktor domyslny
     ~cTree(); //destruktor
 
-    cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow //TODO zmiana by jeszcze zmieniac value a nie tylko sValue
+    cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
     cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
     cTree& join(const std::vector<std::string>& formula); //funkcja laczaca 2 drzewa przyjmujaca jako argument wektor stringow
 
-    T compute(const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa //TODO bedzie trzeba zmienic vector zeby byl wektor T //TODO zmienic by liczyc na value a nie sValue
+
+    T compute(const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
 
     cTree& operator=(const cTree& other); //operator przypisania
     cTree operator+(const cTree& other) const; //operator dodawania
 
     std::set<std::string> findVariables() const; //funkcja znajdujaca zmienne w drzewie
-    void findVariablesAndReplace(std::vector<std::string> replaceValues); //funkcja znajdujaca zmienne w drzewie i zamieniajaca je na wartosci z wektora //TODO bedzie trzeba zmienic vector zeby byl wektor T
+    void findVariablesAndReplace(std::vector<std::string> replaceValues); //funkcja znajdujaca zmienne w drzewie i zamieniajaca je na wartosci z wektora
 
     void printBT() const; //funkcja wypisujaca drzewo w formie graficznej
 
@@ -49,7 +50,7 @@ private:
 
     cNode<T>* findRightLeafParent() const; //funkcja znajdujaca prawy lisc
     static void findVariablesRecursive(cNode<T>* currentNode, std::set<std::string>& variables); //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru
-    static void replaceVariableRecursive(cNode<T>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji //TODO bedzie trzeba zmienic vector zeby byl wektor T
+    static void replaceVariableRecursive(cNode<T>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji
 
     static std::vector<cNode<T>*> getLeavesAtLowestLevel(cNode<T>* node); //funkcja znajdujaca liscie na najnizszym poziomie
     static std::vector<std::vector<cNode<T>*>> segregateLeavesByParent(const std::vector<cNode<T>*>& leaves); //funkcja segregujaca liscie po rodzicach
@@ -62,11 +63,6 @@ private:
 };
 
 
-
-template <typename T>
-cTree<T>::cTree(cNode<T> &newRoot) {
-    cRoot = &newRoot; //przypisujemy adres nowego obiektu cNode do Roota
-}
 
 template <typename T>
 cTree<T>::cTree(const cTree<T> &other) {
@@ -86,7 +82,6 @@ template <typename T>
 cTree<T>::~cTree() {
     delete cRoot; //usuwamy pamiec po Root w destruktorze cNode usuwa pamiec po wszystkich dzieciach
 }
-
 
 
 template <typename T>
@@ -144,7 +139,6 @@ cTree<T>& cTree<T>::join(const cTree& other) {
     return *this; // Zwracamy nowe drzewo
 }
 
-
 template <typename T>
 cTree<T> &cTree<T>::join(const std::vector<std::string> &formula) {
     return join((new cTree)->enter(formula)); //tworzymy nowe drzewo z wektora stringow i laczymy je z aktualnym drzewem
@@ -156,7 +150,6 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
 
     cTree *Tree = new cTree(*this);
 
-
     Tree->findVariablesAndReplace(valuesOfVariables); //zamieniamy zmienne na wartosci
 
 
@@ -166,7 +159,7 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
         std::vector<std::vector<cNode<T> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
 
         for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
-            T newValue = (leaves[0]->cParent->sValue == "*") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
+            T newValue = (leaves[0]->cParent->sValue == "*" || leaves[0]->cParent->sValue == "/") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
 
             for (const auto &leaf: leaves) { //dla kazdego liscia w grupie
                 std::string parentOperator = leaf->cParent->sValue; //pobieramy rodzaj operatora rodzica
@@ -179,6 +172,8 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
                     newValue *= value;
                 } else if (parentOperator == "-") {
                     newValue -= value;
+                } else if (parentOperator == "/") {
+                    newValue = value / newValue;
                 } else if (parentOperator == "cos") {
                     newValue = std::cos(value);
                 } else if (parentOperator == "sin") {
@@ -199,6 +194,55 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
         }
     }
     return -1; //zwracamy -1 jesli nie udalo sie obliczyc wartosci
+
+}
+
+
+template <>
+std::string cTree<std::string>::compute(const std::vector<std::string> valuesOfVariables) const {
+
+    cTree *Tree = new cTree(*this);
+
+
+    Tree->findVariablesAndReplace(valuesOfVariables); //zamieniamy zmienne na wartosci
+
+
+    while (Tree->cRoot != nullptr) { //dopoki nie dojdziemy do Roota
+
+        std::vector<cNode<std::string> *> leavesAtLowestLevel = cTree::getLeavesAtLowestLevel(Tree->cRoot); //pobieramy liscie na najnizszym poziomie
+        std::vector<std::vector<cNode<std::string> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
+
+        for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
+            std::string newValue;
+            std::string parentOperator = leaves[0]->cParent->sValue; //pobieramy rodzaj operatora rodzica
+
+            int maxAmountOfChildren = fMaxAmountOfChildren(parentOperator); //zmienna przechowujaca maksymalna ilosc dzieci dla danego rodzaju operatora
+
+            if(maxAmountOfChildren == 2){
+                if (parentOperator == "+") { //w zaleznosci od rodzaju operatora rodzica wykonujemy odpowiednie dzialanie
+                    newValue = addString(leaves[0]->tValue, leaves[1]->tValue);
+                } else if (parentOperator == "*") {
+                    newValue = mulString(leaves[0]->tValue, leaves[1]->tValue);
+                } else if (parentOperator == "-") {
+                    newValue = subString(leaves[0]->tValue, leaves[1]->tValue);
+                }
+                else if (parentOperator == "/") {
+                    newValue = divString(leaves[0]->tValue, leaves[1]->tValue);
+                }
+            }
+            leaves[0]->cParent->tValue = newValue; //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
+
+
+            if (leaves[0]->cParent->cParent == nullptr) { //jesli rodzic rodzica jest pusty to znaczy ze jestesmy w Root
+                delete Tree; //usuwamy pamiec po drzewie
+                return newValue; //zwracamy wartosc Roota
+            }
+
+            for (const auto &leaf: leaves) delete leaf; //usuwamy pamiec po lisciach
+
+        }
+    }
+        return ""; //zwracamy "" jesli nie udalo sie obliczyc wartosci
 
 }
 
@@ -282,18 +326,59 @@ void cTree<T>::findVariablesRecursive(cNode<T>* currentNode, std::set<std::strin
 
 }
 
-
-template <typename T>
-void cTree<T>::replaceVariableRecursive(cNode<T>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
+template <>
+void cTree<std::string>::findVariablesRecursive(cNode<std::string>* currentNode, std::set<std::string>& variables){
     if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
         return; //jesli tak to konczymy
     }
 
+    if (isStringVariable(currentNode->sValue) && !isOperator(currentNode->sValue)) { //sprawdzamy czy wartosc wezla jest zmienna i czy nie jest operatorem
+        variables.insert(currentNode->sValue); //jesli tak to dodajemy do zbioru zmiennych
+    }
+
+    for (cNode<std::string>* child : *(currentNode->vChildren)) { //przechodzimy po wszystkich dzieciach wezla
+        findVariablesRecursive(child, variables); //rekurencyjnie szukamy zmiennych
+    }
+
+}
+
+
+template <>
+void cTree<double>::replaceVariableRecursive(cNode<double>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
+    if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
+        return; //jesli tak to konczymy
+    }
     if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
         currentNode->tValue = std::stod(replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
-    }  //TODO usunac stod ale potem narazie chce isc spac
+    }
+    for (cNode<double>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
+        replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
+    }
+}
 
-    for (cNode<T>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
+template <>
+void cTree<int>::replaceVariableRecursive(cNode<int>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
+    if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
+        return; //jesli tak to konczymy
+    }
+    if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
+        currentNode->tValue = std::stoi(replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
+    }
+    for (cNode<int>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
+        replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
+    }
+}
+
+
+template <>
+void cTree<std::string>::replaceVariableRecursive(cNode<std::string>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
+    if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
+        return; //jesli tak to konczymy
+    }
+    if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
+        currentNode->tValue = (replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
+    }
+    for (cNode<std::string>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
         replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
     }
 }
@@ -399,16 +484,20 @@ std::vector<std::string> cTree<T>::getPrefixRecursiveHelp(cNode<T> *node) {
     return prefix; //zwracamy wektor prefiksu
 }
 
-
-template <typename T>
-std::string cTree<T>::sGetKnownType() const{
-    std::string type = typeid(T).name(); //pobieramy typ zmiennej
-
-    if (type == "d") return "double";
-    else if (type == "i") return "int";
-    else return "string"; //TODO do zmiany aby bylo bardziej uniwersalne
+template <>
+std::string cTree<std::string>::sGetKnownType() const {
+    return "string"; //zwracamy znany typ drzewa
 }
 
+template <>
+std::string cTree<int>::sGetKnownType() const {
+    return "int"; //zwracamy znany typ drzewa
+}
+
+template <>
+std::string cTree<double>::sGetKnownType() const {
+    return "double"; //zwracamy znany typ drzewa
+}
 
 
 #endif
