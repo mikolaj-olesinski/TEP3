@@ -8,10 +8,12 @@
 #include <iostream>
 #include "../help-functions-and-constants/functions.h"
 
+
+
 template <typename T>
 class cNode {
 
-public: //TODO: zmienic na private
+private:
 
     cNode(); //konstruktor prywany
     cNode(std::string value); //konstruktor z parametrem
@@ -28,7 +30,8 @@ public: //TODO: zmienic na private
 
     std::string sGetKnownType() const; //zwraca znany typ zmiennej
 
-    //friend class cTree; //deklaracja przyjazni z klasa cTree //TODO odkomentowacq
+    template <typename U>
+    friend class cTree; //deklaracja przyjazni z klasa cTree //TODO nie jestem pewien wciaz
 
 };
 

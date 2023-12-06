@@ -44,7 +44,7 @@ public:
 
 
 
-private:
+//TODO usunac private:
 
     cNode<T> *cRoot; //korzen drzewa
 
