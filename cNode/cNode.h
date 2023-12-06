@@ -79,6 +79,7 @@ cNode<T>::~cNode() {
         }
         delete vChildren;
     }
+
 }
 
 

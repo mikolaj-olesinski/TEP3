@@ -7,10 +7,10 @@ int main() {
     //UI();
 
     cTree<std::string> tree;
-    tree.enter({"+", "aaa", "bbb"});
-    tree.join({"+", "bbb", "ccc"});
+    tree.enter({"*", "alaxalaxala", "la"});
     std::string a = tree.compute({});
     std::cout << a << std::endl;
+
 
 
 

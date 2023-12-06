@@ -11,17 +11,17 @@ bool isArthOperator(const std::string& sValue);  // sprawdza czy string jest ope
 bool isTrigOperator(const std::string& sValue); // sprawdza czy string jest operatorem trygonometrycznym
 int fMaxAmountOfChildren(const std::string& sValue); // zwraca maksymalna ilosc dzieci dla danego operatora
 
-bool isPN(std::vector<std::string> formula); // sprawdza czy podana formula jest poprawna notacja polska
+bool isPN(const std::vector<std::string>& formula); // sprawdza czy podana formula jest poprawna notacja polska
 bool checkIfOnlyNumbers(const std::vector<std::string>& formula); // sprawdza czy wszystkie elementy wektora sa liczbami
-bool isNumber(std::string sValue); // sprawdza czy string jest liczba
-bool isVariable(std::string sValue); // sprawdza czy string jest zmienna
-bool isStringVariable(std::string sValue); // sprawdza czy string jest zmienna typu string
-bool isString(std::string sValue); // sprawdza czy string jest stringiem
+bool isNumber(const std::string& sValue); // sprawdza czy string jest liczba
+bool isVariable(const std::string& sValue); // sprawdza czy string jest zmienna
+bool isStringVariable(const std::string& sValue); // sprawdza czy string jest zmienna typu string
+bool isString(const std::string& sValue); // sprawdza czy string jest stringiem
 
-std::string addString(std::string sValue1, std::string sValue2); // dodaje dwa stringi
-std::string subString(std::string sValue1, std::string sValue2); // odejmuje dwa stringi
-std::string mulString(std::string sValue1, std::string sValue2); // mnozy dwa stringi
-std::string divString(std::string sValue1, std::string sValue2); // dzieli dwa stringi
+std::string addString(const std::string& string1, const std::string& string2); // dodaje dwa stringi
+std::string subString(const std::string& string1, const std::string& string2); // odejmuje dwa stringi
+std::string mulString(const std::string& string1, const std::string& string2); // mnozy dwa stringi
+std::string divString(const std::string& string1, const std::string& string2); // dzieli dwa stringi
 
 std::vector<std::string> format(const std::string& sFormula); // formatuje stringa do wektora stringow
 void UI(); // funkcja interfejsu uzytkownika

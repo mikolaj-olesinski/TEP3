@@ -159,7 +159,7 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
         std::vector<std::vector<cNode<T> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
 
         for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
-            T newValue = (leaves[0]->cParent->sValue == "*" || leaves[0]->cParent->sValue == "/") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
+            T newValue = (leaves[0]->cParent->sValue == "*") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
 
             for (const auto &leaf: leaves) { //dla kazdego liscia w grupie
                 std::string parentOperator = leaf->cParent->sValue; //pobieramy rodzaj operatora rodzica
@@ -172,8 +172,8 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
                     newValue *= value;
                 } else if (parentOperator == "-") {
                     newValue -= value;
-                } else if (parentOperator == "/") {
-                    newValue = value / newValue;
+                } else if (parentOperator == "/") { //leaf==leaves[1] odpowiada za to by dzielenie bylo wykonywane tylko raz
+                    if (leaf == leaves[0]) newValue = leaves[1]->tValue / leaves[0]->tValue; //wykonujemy tylko raz poniewaz dzielimy liczby w innej kolejnosci niz sa w prefixie
                 } else if (parentOperator == "cos") {
                     newValue = std::cos(value);
                 } else if (parentOperator == "sin") {

@@ -8,102 +8,96 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug"/>
+				<Option working_dir="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="TEP3">
-				<Option output="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/TEP3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug"/>
+				<Option output="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/TEP3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 TEP3"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 TEP3"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="TEP3/fast">
-				<Option output="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/TEP3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug"/>
+				<Option output="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/TEP3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 TEP3/fast"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 TEP3/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug"/>
+				<Option working_dir="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug"/>
+				<Option working_dir="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP3test/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/cNode/cNode.h">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cNode/cNode.h">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/cTree/cTree.h">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/cTree/cTree.h">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/UI.cpp">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/UI.cpp">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/functions.cpp">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/functions.cpp">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/functions.h">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/functions.h">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/stale.h">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/stale.h">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/main.cpp">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/main.cpp">
 			<Option target="TEP3"/>
 		</Unit>
-		<Unit filename="C:/Users/mikol/CLionProjects/TEP3test/CMakeLists.txt">
+		<Unit filename="/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREE/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
