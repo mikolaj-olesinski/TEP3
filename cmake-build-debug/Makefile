@@ -128,6 +128,30 @@ TEP3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TEP3.dir\build.make CMakeFiles/TEP3.dir/build
 .PHONY : TEP3/fast
 
+cNode/cNode.obj: cNode/cNode.cpp.obj
+.PHONY : cNode/cNode.obj
+
+# target to build an object file
+cNode/cNode.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TEP3.dir\build.make CMakeFiles/TEP3.dir/cNode/cNode.cpp.obj
+.PHONY : cNode/cNode.cpp.obj
+
+cNode/cNode.i: cNode/cNode.cpp.i
+.PHONY : cNode/cNode.i
+
+# target to preprocess a source file
+cNode/cNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TEP3.dir\build.make CMakeFiles/TEP3.dir/cNode/cNode.cpp.i
+.PHONY : cNode/cNode.cpp.i
+
+cNode/cNode.s: cNode/cNode.cpp.s
+.PHONY : cNode/cNode.s
+
+# target to generate assembly for a file
+cNode/cNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TEP3.dir\build.make CMakeFiles/TEP3.dir/cNode/cNode.cpp.s
+.PHONY : cNode/cNode.cpp.s
+
 help-functions-and-constants/functions.obj: help-functions-and-constants/functions.cpp.obj
 .PHONY : help-functions-and-constants/functions.obj
 
@@ -185,6 +209,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... TEP3
+	@echo ... cNode/cNode.obj
+	@echo ... cNode/cNode.i
+	@echo ... cNode/cNode.s
 	@echo ... help-functions-and-constants/functions.obj
 	@echo ... help-functions-and-constants/functions.i
 	@echo ... help-functions-and-constants/functions.s

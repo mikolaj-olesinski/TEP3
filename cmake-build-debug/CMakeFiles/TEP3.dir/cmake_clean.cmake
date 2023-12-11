@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/TEP3.dir/cNode/cNode.cpp.obj"
+  "CMakeFiles/TEP3.dir/cNode/cNode.cpp.obj.d"
   "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj"
   "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj.d"
   "CMakeFiles/TEP3.dir/main.cpp.obj"

@@ -2,8 +2,10 @@
 #include <string>
 #include <sstream>
 #include "../cTree/cTree.h"
+#include "../cTree/cTreeHelp.tpp"
+#include "../cTree/cTree.tpp"
 
-template <typename T>
+template <typename>
 class UI {
 public:
     void run();
@@ -46,41 +48,37 @@ const std::string RESULT = "Wynik: ";
 void startUIAndDetermineTypeOfTree() {
     int typeOfTree;
 
-    std::cout << "----------------------------------------------------" << std::endl;
-    std::cout << "Dostepne typy drzew:" << std::endl;
-    std::cout << "1. int" << std::endl;
-    std::cout << "2. double" << std::endl;
-    std::cout << "3. string" << std::endl;
-    std::cout << "----------------------------------------------------" << std::endl;
-    std::cout << "Podaj typ drzewa: ";
+    while (true) {
+        std::cout << "----------------------------------------------------" << std::endl;
+        std::cout << "Dostepne typy drzew:" << std::endl;
+        std::cout << "1. int" << std::endl;
+        std::cout << "2. double" << std::endl;
+        std::cout << "3. string" << std::endl;
+        std::cout << "4. exit" << std::endl;
+        std::cout << "----------------------------------------------------" << std::endl;
+        std::cout << "Podaj typ drzewa: ";
 
-    std::cin >> typeOfTree;
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> typeOfTree;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    switch (typeOfTree) {
-        case 1: {
+        if (typeOfTree == 1) {
             UI<int> uiInt;
             uiInt.run();
-            break;
-        }
-        case 2: {
+        } else if (typeOfTree == 2) {
             UI<double> uiDouble;
             uiDouble.run();
-            break;
-        }
-        case 3: {
+        } else if (typeOfTree == 3) {
             UI<std::string> uiString;
             uiString.run();
+        } else if (typeOfTree == 4) {
             break;
-        }
-        default:
+        } else {
             std::cout << WRONG_TYPE_OF_TREE << std::endl;
-            break;
+        }
     }
 }
 
-//TODO zmienic to na te const ale to potem
 template<typename T>
 void UI<T>::run() {
 
@@ -107,7 +105,7 @@ void UI<T>::run() {
         }
 
         if (command == ENTER) {
-            std::vector<std::string> formula = format(rest); //TODO sprawdzic dla wszyskich typow formule
+            std::vector<std::string> formula = format(rest);
             if (checkFormulaWithVariables(formula) && isPN(formula)){ //pamietac by checkFormula bylo pierwsze
                 Tree.enter(formula);
                 std::cout << ENTERED_TREE << std::endl;
@@ -137,7 +135,7 @@ void UI<T>::run() {
         } else if (command == JOIN) {
             std::vector<std::string> formula = format(rest);
             if (checkFormulaWithVariables(formula) && isPN(formula)){
-                Tree.join(formula);
+                Tree.join(((new cTree<T>)->enter(formula)));
                 std::cout << JOINED_TREE << std::endl;
             } else std::cout << WRONG_FORMULA << std::endl;
 

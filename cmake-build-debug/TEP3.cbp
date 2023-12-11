@@ -82,10 +82,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cNode/cNode.cpp">
+			<Option target="TEP3"/>
+		</Unit>
 		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cNode/cNode.h">
 			<Option target="TEP3"/>
 		</Unit>
 		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cTree/cTree.h">
+			<Option target="TEP3"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cTree/cTree.tpp">
+			<Option target="TEP3"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cTree/cTreeHelp.tpp">
 			<Option target="TEP3"/>
 		</Unit>
 		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/UI.h">

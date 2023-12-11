@@ -132,7 +132,7 @@ bool isPN(std::vector<std::string> formula) { //
 bool isStringVariable(std::string sValue) {
     if (sValue[0] == '"' && sValue[sValue.length() - 1] == '"') { //jesli pierwszy i ostatni znak jest cudzyslowiem
         for (int i = 1; i < sValue.length() - 1; i++) { //dla kazdego znaku w stringu
-            if (!isalpha(sValue[i])) { //jesli znak nie jest litera
+            if (!isalpha(sValue[i]) && !isdigit(sValue[i])) { //jesli znak nie jest litera i nie jest cyfra
                 return false; //zwroc false
             }
         }
@@ -144,7 +144,7 @@ bool isStringVariable(std::string sValue) {
 bool isString(std::string sValue) {
     if (isOperator(sValue)) return false; //jesli string jest operatorem zwroc false
     for (char c : sValue) { //dla kazdego znaku w stringu
-        if (!isalpha(c)) { //jesli znak nie jest litera
+        if (!isalpha(c) && !isdigit(c)) { //jesli znak nie jest litera i nie jest cyfra
             return false; //zwroc false
         }
     }
