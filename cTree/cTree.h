@@ -48,6 +48,8 @@ public:
 
     cNode<T> *cRoot; //korzen drzewa
 
+    T computeNode(cNode<T>* node, const std::map<std::string, std::string>& valuesOfVariables) const; //funkcja obliczajaca wartosc wezla
+
     cNode<T>* findRightLeafParent() const; //funkcja znajdujaca prawy lisc
     static void findVariablesRecursive(cNode<T>* currentNode, std::set<std::string>& variables); //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru
     static void replaceVariableRecursive(cNode<T>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables); //funkcja zamieniajaca zmienne w drzewie za pomoca rekurencji
@@ -146,106 +148,83 @@ cTree<T> &cTree<T>::join(const std::vector<std::string> &formula) {
 
 
 template <typename T>
-T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
+T cTree<T>::computeNode(cNode<T>* node, const std::map<std::string, std::string>& valuesOfVariables) const {
+    if (isVariable(node->sValue)) {
+        return std::stod(valuesOfVariables.at(node->sValue)); // Jeśli węzeł jest zmienną, zwróć wartość zmiennej
+    } else if (!isOperator(node->sValue)) {
+        return std::stod(node->sValue); // Jeśli węzeł nie jest operatorem, zwróć jego wartość
+    } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
+        std::string parentOperator = node->sValue;
 
-    cTree *Tree = new cTree(*this);
-
-    Tree->findVariablesAndReplace(valuesOfVariables); //zamieniamy zmienne na wartosci
-
-
-    while (Tree->cRoot != nullptr) { //dopoki nie dojdziemy do Roota
-
-        std::vector<cNode<T> *> leavesAtLowestLevel = cTree::getLeavesAtLowestLevel(Tree->cRoot); //pobieramy liscie na najnizszym poziomie
-        std::vector<std::vector<cNode<T> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
-        T value; //zmienna przechowujaca wartosc nowego wezla
-
-        for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
-            T newValue = (leaves[0]->cParent->sValue == "*") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
-
-            for (const auto &leaf: leaves) { //dla kazdego liscia w grupie
-                std::string parentOperator = leaf->cParent->sValue; //pobieramy rodzaj operatora rodzica
-
-                T value = stod(leaf->sValue); //pobieramy wartosc liscia
-
-
-                if (parentOperator == "+") { //w zaleznosci od rodzaju operatora rodzica wykonujemy odpowiednie dzialanie
-                    newValue += value;
-                } else if (parentOperator == "*") {
-                    newValue *= value;
-                } else if (parentOperator == "-") {
-                    newValue -= value;
-                } else if (parentOperator == "/") {
-                    if (leaf == leaves[0]) newValue = value;
-                    else newValue = value / newValue;
-                } else if (parentOperator == "cos") {
-                    newValue = std::cos(value);
-                } else if (parentOperator == "sin") {
-                    newValue = std::sin(value);
-                }
-
+        if(isTrigOperator(parentOperator)){
+            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
+            if (parentOperator == "sin") {
+                return sin(leftValue);
+            } else if (parentOperator == "cos") {
+                return cos(leftValue);
             }
+        }
+        else if(isArthOperator(parentOperator)){
+            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
+            T rightValue = computeNode((*node->vChildren)[1], valuesOfVariables);
 
-            if (leaves[0]->cParent->cParent == nullptr) { //jesli rodzic rodzica jest pusty to znaczy ze jestesmy w Root
-                delete Tree; //usuwamy pamiec po drzewie
-                return newValue; //zwracamy wartosc Roota
+            if (parentOperator == "+") {
+                return leftValue + rightValue;
+            } else if (parentOperator == "*") {
+                return leftValue * rightValue;
+            } else if (parentOperator == "-") {
+                return leftValue - rightValue;
+            } else if (parentOperator == "/") {
+                if (rightValue == 0) throw std::invalid_argument("nie dziel przez 0");
+                else return leftValue / rightValue;
             }
-
-            leaves[0]->cParent->sValue =  std::to_string(newValue); //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
-
-            for (const auto &leaf: leaves) delete leaf; //usuwamy pamiec po lisciach
         }
     }
-    return -1; //zwracamy -1 jesli nie udalo sie obliczyc wartosci
+    return -1;
+}
 
+template <typename T>
+T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const {
+    std::set<std::string> variables = findVariables();
+    std::map<std::string, std::string> valuesMap;
+
+    auto varIt = variables.begin();
+    for (const auto& value : valuesOfVariables) {
+        if (varIt != variables.end()) {
+            valuesMap[*varIt] = value;
+            ++varIt;
+        } else break;
+    }
+
+    return computeNode(cRoot, valuesMap);
 }
 
 
 template <>
-std::string cTree<std::string>::compute(const std::vector<std::string> valuesOfVariables) const {
+std::string cTree<std::string>::computeNode(cNode<std::string>* node, const std::map<std::string, std::string>& valuesOfVariables) const {
+    if (isStringVariable(node->sValue)) {
+        return valuesOfVariables.at(node->sValue); // Jeśli węzeł jest zmienną, zwróć wartość zmiennej
+    } else if (!isOperator(node->sValue)) {
+        return node->sValue; // Jeśli węzeł nie jest operatorem, zwróć jego wartość
+    } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
+        std::string parentOperator = node->sValue;
 
-    cTree *Tree = new cTree(*this);
+        if(isArthOperator(parentOperator)){
+            std::string leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
+            std::string rightValue = computeNode((*node->vChildren)[1], valuesOfVariables);
 
-
-    Tree->findVariablesAndReplace(valuesOfVariables); //zamieniamy zmienne na wartosci
-
-
-    while (Tree->cRoot != nullptr) { //dopoki nie dojdziemy do Roota
-
-        std::vector<cNode<std::string> *> leavesAtLowestLevel = cTree::getLeavesAtLowestLevel(Tree->cRoot); //pobieramy liscie na najnizszym poziomie
-        std::vector<std::vector<cNode<std::string> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
-
-        for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
-            std::string newValue;
-            std::string parentOperator = leaves[0]->cParent->sValue; //pobieramy rodzaj operatora rodzica
-
-            int maxAmountOfChildren = fMaxAmountOfChildren(parentOperator); //zmienna przechowujaca maksymalna ilosc dzieci dla danego rodzaju operatora
-
-            if(maxAmountOfChildren == 2){
-                if (parentOperator == "+") { //w zaleznosci od rodzaju operatora rodzica wykonujemy odpowiednie dzialanie
-                    newValue = addString(leaves[0]->sValue, leaves[1]->sValue);
-                } else if (parentOperator == "*") {
-                    newValue = mulString(leaves[0]->sValue, leaves[1]->sValue);
-                } else if (parentOperator == "-") {
-                    newValue = subString(leaves[0]->sValue, leaves[1]->sValue);
-                }
-                else if (parentOperator == "/") {
-                    newValue = divString(leaves[0]->sValue, leaves[1]->sValue);
-                }
+            if (parentOperator == "+") {
+                return addString(leftValue, rightValue);
+            } else if (parentOperator == "*") {
+                return mulString(leftValue, rightValue);
+            } else if (parentOperator == "-") {
+                return subString(leftValue, rightValue);
+            } else if (parentOperator == "/") {
+                return divString(leftValue, rightValue);
             }
-            leaves[0]->cParent->sValue = newValue; //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
-
-
-            if (leaves[0]->cParent->cParent == nullptr) { //jesli rodzic rodzica jest pusty to znaczy ze jestesmy w Root
-                delete Tree; //usuwamy pamiec po drzewie
-                return newValue; //zwracamy wartosc Roota
-            }
-
-            for (const auto &leaf: leaves) delete leaf; //usuwamy pamiec po lisciach
-
         }
     }
-        return ""; //zwracamy "" jesli nie udalo sie obliczyc wartosci
-
+    return "";
 }
 
 
