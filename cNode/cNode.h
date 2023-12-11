@@ -23,12 +23,10 @@ private:
 
     std::vector<cNode*>* vChildren; //wektor dzieci
     cNode* cParent; //wskaznik na rodzica
-    std::string sValue; //wartosc wezla w Stringu przechowuje on zmienne i operatory
-    T tValue; //wartosc wezla w typie T przechowuje on wartosci int, double, string
+    std::string sValue; //wartosc wezla w Stringu
 
     void cAddtoNode(cNode &newChild); //dodaje wezel do wektora dzieci
 
-    std::string sGetKnownType() const; //zwraca znany typ zmiennej
 
     template <typename U>
     friend class cTree; //deklaracja przyjazni z klasa cTree //TODO nie jestem pewien wciaz
@@ -39,26 +37,12 @@ private:
 template <typename T>
 cNode<T>::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(""){}
 
-template<>
-cNode<double> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isDouble(value)) tValue = std::stod(value);
-}
-
-template<>
-cNode<int> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isInt(value)) tValue = std::stoi(value);
-}
-
-template<>
-cNode<std::string> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isString(value)) tValue = value;
-}
-
-
+template<typename T>
+cNode<T> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value){}
 
 
 template <typename T>
-cNode<T>::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(other.sValue), tValue(other.tValue) {
+cNode<T>::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(other.sValue){
     for (const auto &child : *(other.vChildren)) { // Przeglądamy dzieci innego węzła
         cNode *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
         newChild->cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
@@ -92,25 +76,5 @@ void cNode<T>::cAddtoNode(cNode &newChild) {
     newChild.cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
 }
 
-
-template <>
-std::string cNode<double>::sGetKnownType() const { //TODO bylo inline ogarnac co to
-    return "double";
-}
-
-template <>
-std::string cNode<int>::sGetKnownType() const {
-    return "int";
-}
-
-template <>
-std::string cNode<std::string>::sGetKnownType() const {
-    return "string";
-}
-
-template <typename T>
-std::string cNode<T>::sGetKnownType() const {
-    return "unknown";
-}
 
 #endif

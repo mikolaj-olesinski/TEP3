@@ -182,11 +182,6 @@ void UI<T>::printHelp() {
     std::cout << "----------------------------------------------------" << std::endl;
 }
 
-template<typename T>
-bool UI<T>::checkFormula(std::vector<std::string> formula) {
-    std::cout << "nieznan typ drzewa" << std::endl;
-    return false;
-}
 
 template<>
 bool UI<int>::checkFormula(std::vector<std::string> formula) {
@@ -212,16 +207,9 @@ bool UI<std::string>::checkFormula(std::vector<std::string> formula) {
     return true;
 }
 
-template<typename T>
-bool UI<T>::checkFormulaWithVariables(std::vector<std::string> formula) {
-    std::cout << "nieznany typ drzewa" << std::endl;
-    return false;
-}
-
 template<>
 bool UI<int>::checkFormulaWithVariables(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        std::cout << s << std::endl;
         if (!isInt(s) && !isVariable(s) && (!isOperator(s))) return false;
     }
     return true;

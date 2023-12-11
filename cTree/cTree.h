@@ -157,6 +157,7 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
 
         std::vector<cNode<T> *> leavesAtLowestLevel = cTree::getLeavesAtLowestLevel(Tree->cRoot); //pobieramy liscie na najnizszym poziomie
         std::vector<std::vector<cNode<T> *>> segregatedLeaves = cTree::segregateLeavesByParent(leavesAtLowestLevel); //grupujemy liscie wedlug rodzica
+        T value; //zmienna przechowujaca wartosc nowego wezla
 
         for (const auto &leaves: segregatedLeaves) { //dla kazdej grupy lisci
             T newValue = (leaves[0]->cParent->sValue == "*") ? 1 : 0; //ustawiamy wartosc nowego wezla na 1 lub 0 w zaleznosci od rodzaju operatora
@@ -164,7 +165,8 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
             for (const auto &leaf: leaves) { //dla kazdego liscia w grupie
                 std::string parentOperator = leaf->cParent->sValue; //pobieramy rodzaj operatora rodzica
 
-                T value = leaf->tValue; //pobieramy wartosc liscia
+                T value = stod(leaf->sValue); //pobieramy wartosc liscia
+
 
                 if (parentOperator == "+") { //w zaleznosci od rodzaju operatora rodzica wykonujemy odpowiednie dzialanie
                     newValue += value;
@@ -172,8 +174,9 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
                     newValue *= value;
                 } else if (parentOperator == "-") {
                     newValue -= value;
-                } else if (parentOperator == "/") { //leaf==leaves[1] odpowiada za to by dzielenie bylo wykonywane tylko raz
-                    if (leaf == leaves[0]) newValue = leaves[1]->tValue / leaves[0]->tValue; //wykonujemy tylko raz poniewaz dzielimy liczby w innej kolejnosci niz sa w prefixie
+                } else if (parentOperator == "/") {
+                    if (leaf == leaves[0]) newValue = value;
+                    else newValue = value / newValue;
                 } else if (parentOperator == "cos") {
                     newValue = std::cos(value);
                 } else if (parentOperator == "sin") {
@@ -187,8 +190,7 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const{
                 return newValue; //zwracamy wartosc Roota
             }
 
-            leaves[0]->cParent->tValue = newValue; //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
-
+            leaves[0]->cParent->sValue =  std::to_string(newValue); //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
 
             for (const auto &leaf: leaves) delete leaf; //usuwamy pamiec po lisciach
         }
@@ -220,17 +222,17 @@ std::string cTree<std::string>::compute(const std::vector<std::string> valuesOfV
 
             if(maxAmountOfChildren == 2){
                 if (parentOperator == "+") { //w zaleznosci od rodzaju operatora rodzica wykonujemy odpowiednie dzialanie
-                    newValue = addString(leaves[0]->tValue, leaves[1]->tValue);
+                    newValue = addString(leaves[0]->sValue, leaves[1]->sValue);
                 } else if (parentOperator == "*") {
-                    newValue = mulString(leaves[0]->tValue, leaves[1]->tValue);
+                    newValue = mulString(leaves[0]->sValue, leaves[1]->sValue);
                 } else if (parentOperator == "-") {
-                    newValue = subString(leaves[0]->tValue, leaves[1]->tValue);
+                    newValue = subString(leaves[0]->sValue, leaves[1]->sValue);
                 }
                 else if (parentOperator == "/") {
-                    newValue = divString(leaves[0]->tValue, leaves[1]->tValue);
+                    newValue = divString(leaves[0]->sValue, leaves[1]->sValue);
                 }
             }
-            leaves[0]->cParent->tValue = newValue; //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
+            leaves[0]->cParent->sValue = newValue; //ustawiamy wartosc rodzica rodzica na wartosc nowego wezla
 
 
             if (leaves[0]->cParent->cParent == nullptr) { //jesli rodzic rodzica jest pusty to znaczy ze jestesmy w Root
@@ -343,42 +345,15 @@ void cTree<std::string>::findVariablesRecursive(cNode<std::string>* currentNode,
 }
 
 
-template <>
-void cTree<double>::replaceVariableRecursive(cNode<double>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
+template <typename T>
+void cTree<T>::replaceVariableRecursive(cNode<T>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
     if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
         return; //jesli tak to konczymy
     }
     if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
-        currentNode->tValue = std::stod(replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
+        currentNode->sValue = (replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
     }
-    for (cNode<double>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
-        replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
-    }
-}
-
-template <>
-void cTree<int>::replaceVariableRecursive(cNode<int>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
-    if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
-        return; //jesli tak to konczymy
-    }
-    if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
-        currentNode->tValue = std::stoi(replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
-    }
-    for (cNode<int>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
-        replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
-    }
-}
-
-
-template <>
-void cTree<std::string>::replaceVariableRecursive(cNode<std::string>* currentNode, std::string& variable, std::vector<std::string>& replaceValues, std::set<std::string>& findVariables){
-    if (currentNode == nullptr) { //sprawdzamy czy wezel nie jest pusty
-        return; //jesli tak to konczymy
-    }
-    if (currentNode->sValue == variable) { //sprawdzamy czy wartosc wezla jest zmienna
-        currentNode->tValue = (replaceValues[std::distance(findVariables.begin(), findVariables.find(variable))]); //jesli tak to zamieniamy na wartosc z wektora wartosci
-    }
-    for (cNode<std::string>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
+    for (cNode<T>* child : *currentNode->vChildren) { //przechodzimy po wszystkich dzieciach wezla
         replaceVariableRecursive(child, variable, replaceValues, findVariables); //rekurencyjnie zamieniamy zmienne
     }
 }
