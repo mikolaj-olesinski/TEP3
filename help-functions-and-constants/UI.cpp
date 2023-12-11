@@ -4,8 +4,16 @@
 //#include "../cTree/cTree.h"
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 //void UI(){
-//    cTree<std::string> Tree;
+//    cTree<int> Tree;
 //    std::string line; // wczytana linia
 //    std::string command; // komenda
 //    std::string rest; // reszta linii po komendzie

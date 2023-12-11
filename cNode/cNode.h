@@ -21,8 +21,8 @@ public: //TODO: zmienic na private
 
     std::vector<cNode*>* vChildren; //wektor dzieci
     cNode* cParent; //wskaznik na rodzica
-    std::string sValue; //wartosc wezla w Stringu
-    T tValue; //wartosc wezla w typie T
+    std::string sValue; //wartosc wezla w Stringu przechowuje on zmienne i operatory
+    T tValue; //wartosc wezla w typie T przechowuje on wartosci int, double, string
 
     void cAddtoNode(cNode &newChild); //dodaje wezel do wektora dzieci
 
@@ -38,12 +38,12 @@ cNode<T>::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sVal
 
 template<>
 cNode<double> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isNumber(value)) tValue = std::stod(value); //TODO zmenic na isDouble
+    if (isDouble(value)) tValue = std::stod(value);
 }
 
 template<>
 cNode<int> ::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value) {
-    if (isNumber(value)) tValue = std::stoi(value); //TODO zmenic na isInt
+    if (isInt(value)) tValue = std::stoi(value);
 }
 
 template<>

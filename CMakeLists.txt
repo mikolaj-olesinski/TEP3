@@ -10,4 +10,6 @@ add_executable(TEP3 main.cpp
         help-functions-and-constants/functions.cpp
         help-functions-and-constants/functions.h
         help-functions-and-constants/UI.cpp
+        help-functions-and-constants/UI.h
+        help-functions-and-constants/UI.h
 )

@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/UI.cpp" "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.obj.d"
-  "C:/Users/mikol/CLionProjects/TEP3test/help-functions-and-constants/functions.cpp" "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj.d"
-  "C:/Users/mikol/CLionProjects/TEP3test/main.cpp" "CMakeFiles/TEP3.dir/main.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/main.cpp.obj.d"
+  "C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/UI.cpp" "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/help-functions-and-constants/UI.cpp.obj.d"
+  "C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/help-functions-and-constants/functions.cpp" "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/help-functions-and-constants/functions.cpp.obj.d"
+  "C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/main.cpp" "CMakeFiles/TEP3.dir/main.cpp.obj" "gcc" "CMakeFiles/TEP3.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
