@@ -151,6 +151,7 @@ void UI<T>::run() {
         }else if (command == HELP) {
             printHelp();
         }else if (command == EXIT) {
+            delete &Tree;
             std::cout << EXIT_PROGRAM << std::endl;
             break;
         }else if (command == RESET) {

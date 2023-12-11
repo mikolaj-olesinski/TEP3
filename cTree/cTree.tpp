@@ -22,6 +22,7 @@ cTree<T>::~cTree() {
 
 template <typename T>
 cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
+    delete cRoot; //usuwamy pamiec po Root
     cRoot = new cNode(formula[0]); //tworzymy nowy obiekt cNode z pierwszym elementem formuly
     cNode* CurrentNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres aktualnego wezla na ktorym dzialamy
     CurrentNode = cRoot; //przypisujemy adres Roota do CurrentNode
