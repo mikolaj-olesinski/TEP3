@@ -1,5 +1,5 @@
 
-#include "help-functions-and-constants/UI.h"
+#include "help-functions-and-constants/UI.tpp"
 
 int main() {
 
@@ -8,7 +8,6 @@ int main() {
 }
 
 
-//TODO wgrac program by sprawdzic czy nie ma memory leakow
+//TODO komentarze
 //TODO testy
 
-//TODO chyba mam wyciek paimeci w enter i format
