@@ -7,51 +7,51 @@ T cTree<T>::computeNode(cNode* node, const std::map<std::string, std::string>& v
     } else if (!isOperator(node->sValue)) {
         return std::stod(node->sValue); // Jeśli węzeł nie jest operatorem, zwróć jego wartość
     } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
-        std::string parentOperator = node->sValue;
+        std::string parentOperator = node->sValue; //przypisujemy operator do zmiennej
 
-        if(isTrigOperator(parentOperator)){
-            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
-            if (parentOperator == "sin") {
-                return sin(leftValue);
-            } else if (parentOperator == "cos") {
-                return cos(leftValue);
+        if(isTrigOperator(parentOperator)){ //sprawdzamy czy operator jest funkcja trygonometryczna
+            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables); //obliczamy wartosc dziecka
+            if (parentOperator == "sin") { //sprawdzamy jaka funkcja trygonometryczna
+                return sin(leftValue); //obliczamy wartosc funkcji
+            } else if (parentOperator == "cos") { //sprawdzamy jaka funkcja trygonometryczna
+                return cos(leftValue); //obliczamy wartosc funkcji
             }
         }
-        else if(isArthOperator(parentOperator)){
-            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
-            T rightValue = computeNode((*node->vChildren)[1], valuesOfVariables);
+        else if(isArthOperator(parentOperator)){ //sprawdzamy czy operator jest operatorem arytmetycznym
+            T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables); //obliczamy wartosc lewego dziecka
+            T rightValue = computeNode((*node->vChildren)[1], valuesOfVariables); //obliczamy wartosc prawego dziecka
 
-            if (parentOperator == "+") {
-                return leftValue + rightValue;
+            if (parentOperator == "+") { //sprawdzamy jaki operator arytmetyczny
+                return leftValue + rightValue; //obliczamy wartosc wyrazenia
             } else if (parentOperator == "*") {
                 return leftValue * rightValue;
             } else if (parentOperator == "-") {
                 return leftValue - rightValue;
             } else if (parentOperator == "/") {
-                if (rightValue == 0) throw std::invalid_argument("nie dziel przez 0");
+                if (rightValue == 0) throw std::invalid_argument("nie dziel przez 0"); //sprawdzamy czy nie dzielimy przez 0
                 else return leftValue / rightValue;
             }
         }
     }
-    return -1;
+    return -1; //zwracamy -1 jesli nie udalo sie obliczyc wartosci
 }
 
 
 template <>
-std::string cTree<std::string>::computeNode(cNode* node, const std::map<std::string, std::string>& valuesOfVariables) const {
-    if (isStringVariable(node->sValue)) {
+std::string cTree<std::string>::computeNode(cNode* node, const std::map<std::string, std::string>& valuesOfVariables) const { //specjalizacja dla stringow
+    if (isStringVariable(node->sValue)) { //sprawdzamy czy wartosc wezla jest zmienna dla stringow
         return valuesOfVariables.at(node->sValue); // Jeśli węzeł jest zmienną, zwróć wartość zmiennej
     } else if (!isOperator(node->sValue)) {
         return node->sValue; // Jeśli węzeł nie jest operatorem, zwróć jego wartość
     } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
         std::string parentOperator = node->sValue;
 
-        if(isArthOperator(parentOperator)){
-            std::string leftValue = computeNode((*node->vChildren)[0], valuesOfVariables);
-            std::string rightValue = computeNode((*node->vChildren)[1], valuesOfVariables);
+        if(isArthOperator(parentOperator)){ //sprawdzamy czy operator jest operatorem arytmetycznym
+            std::string leftValue = computeNode((*node->vChildren)[0], valuesOfVariables); //obliczamy wartosc lewego dziecka
+            std::string rightValue = computeNode((*node->vChildren)[1], valuesOfVariables); //obliczamy wartosc prawego dziecka
 
-            if (parentOperator == "+") {
-                return addString(leftValue, rightValue);
+            if (parentOperator == "+") { //sprawdzamy jaki operator arytmetyczny
+                return addString(leftValue, rightValue); //obliczamy wartosc wyrazenia uzywajac specjlalnych fu
             } else if (parentOperator == "*") {
                 return mulString(leftValue, rightValue);
             } else if (parentOperator == "-") {
@@ -61,7 +61,7 @@ std::string cTree<std::string>::computeNode(cNode* node, const std::map<std::str
             }
         }
     }
-    return "";
+    return ""; //zwracamy pusty string jesli nie udalo sie obliczyc wartosci
 }
 
 

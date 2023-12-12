@@ -184,15 +184,15 @@ std::string mulString(const std::string& string1, const std::string& string2) {
     std::set<int> positions = positionsOfPattern(string1, string2.substr(0, 1)); // znajdz pozycje pierwszego znaku string2 w string1
     int offset = 0; // zmienna do śledzenia aktualnej pozycji po wstawieniu
     for (int position : positions) { // dla kazdej pozycji
-        result.insert(position + offset + 1, string2.substr(1, string2.length() - 1)); // wstaw string2 do result od pozycji + 1
-        offset += string2.length() - 1; // zaktualizuj offset
+    result.insert(position + offset + 1, string2.substr(1)); // wstaw string2 od pozycji + 1 w dane miejsce
+    offset += string2.size() - 1; // zaktualizuj offset
     }
     return result; // zwroc result
 }
 
 std::string divString(const std::string& string1, const std::string& string2) {
     if (string2.empty()) {
-        return string1; // If string2 is empty, return string1 unchanged
+        return string1; // jesli string2 jest pusty zwroc string1
     }
 
     std::string result = string1; // string result = string1

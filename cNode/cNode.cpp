@@ -1,13 +1,13 @@
 #include "cNode.h"
 
-cNode::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(""){}
+cNode::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(""){} //konstruktor domyslny
 
 
-cNode::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value){}
+cNode::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value){} //konstruktor z parametrem
 
 
 
-cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(other.sValue){
+cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(other.sValue){ //konstruktor kopiujacy
     for (const auto &child : *(other.vChildren)) { // Przeglądamy dzieci innego węzła
         cNode *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
         newChild->cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
@@ -16,7 +16,7 @@ cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent
 }
 
 // Destruktor
-cNode::~cNode() {
+cNode::~cNode() { //destruktor
 
     if (cParent != nullptr) {  // Jeżeli istnieje rodzic
         auto& children = *(cParent->vChildren); // Pobieramy wektor dzieci rodzica
@@ -33,7 +33,7 @@ cNode::~cNode() {
 
 }
 
-void cNode::cAddtoNode(cNode &newChild) {
+void cNode::cAddtoNode(cNode &newChild) {  //dodaje wezel do wektora dzieci
     vChildren->push_back(&newChild); //dodjemy nowe dziecko do wektora dzieci
     newChild.cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
 }

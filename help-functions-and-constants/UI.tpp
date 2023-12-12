@@ -1,9 +1,9 @@
 #include "UI.h"
 
 void startUIAndDetermineTypeOfTree() {
-    int typeOfTree;
+    int typeOfTree; //zmienna przechowujaca typ drzewa
 
-    while (true) {
+    while (true) { // petla do momentu podania poprawnego typu drzewa
         std::cout << "----------------------------------------------------" << std::endl;
         std::cout << "Dostepne typy drzew:" << std::endl;
         std::cout << "1. int" << std::endl;
@@ -13,23 +13,23 @@ void startUIAndDetermineTypeOfTree() {
         std::cout << "----------------------------------------------------" << std::endl;
         std::cout << "Podaj typ drzewa: ";
 
-        std::cin >> typeOfTree;
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> typeOfTree; // wczytanie typu drzewa
+        std::cin.clear();  // czyszczenie flagi bledu
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignorowanie blednych znakow
 
-        if (typeOfTree == 1) {
-            UI<int> uiInt;
-            uiInt.run();
+        if (typeOfTree == 1) { // wybor typu drzewa
+            UI<int> uiInt; // utworzenie obiektu UI
+            uiInt.run(); // uruchomienie UI
         } else if (typeOfTree == 2) {
             UI<double> uiDouble;
             uiDouble.run();
         } else if (typeOfTree == 3) {
             UI<std::string> uiString;
             uiString.run();
-        } else if (typeOfTree == 4) {
+        } else if (typeOfTree == 4) { // wyjscie z programu
             break;
         } else {
-            std::cout << WRONG_TYPE_OF_TREE << std::endl;
+            std::cout << WRONG_TYPE_OF_TREE << std::endl; // blad przy wyborze typu drzewa
         }
     }
 }
@@ -42,62 +42,62 @@ void UI<T>::run() {
     std::string command; // komenda
     std::string rest; // reszta linii po komendzie
 
-    printHelp();
+    printHelp(); // wypisanie dostepnych komend
 
-    while (true) {
+    while (true) { // petla do momentu podania komendy exit
 
-        rest = "";
+        rest = ""; // wyczyszczenie lini w ktorym jest formula
         std::cout << START_COMMAND;
         std::getline(std::cin, line); // wczytanie linii
         std::istringstream iss(line); // utworzenie strumienia z linii
 
 
-        if (iss >> command) {
-            std::getline(iss >> std::ws, rest);
+        if (iss >> command) { // wczytanie komendy
+            std::getline(iss >> std::ws, rest); // wczytanie reszty linii
         } else {
             std::cout << ERROR_COMMAND << std::endl;
             continue;
         }
 
         if (command == ENTER) {
-            std::vector<std::string> formula = format(rest);
+            std::vector<std::string> formula = format(rest); // formatowanie formuly do wektora stringow
             if (checkFormulaWithVariables(formula) && isPN(formula)){ //pamietac by checkFormula bylo pierwsze
-                Tree.enter(formula);
+                Tree.enter(formula); // dodanie drzewa
                 std::cout << ENTERED_TREE << std::endl;
-            } else std::cout << WRONG_FORMULA << std::endl;
+            } else std::cout << WRONG_FORMULA << std::endl; // blad przy dodawaniu drzewa
 
 
-        } else if (command == PRINT_TREE) {
+        } else if (command == PRINT_TREE) { // wypisanie drzewa w postaci "graficznej"
             Tree.printBT();
 
         } else if (command == PRINT) {
-            std::vector<std::string> formula = Tree.getPrefix();
-            for (const auto& s : formula) {
+            std::vector<std::string> formula = Tree.getPrefix(); // pobranie formuly jako prefix
+            for (const auto& s : formula) { // wypisanie formuly
                 std::cout << s << " ";
             }
             std::cout << std::endl;
 
-        }else if (command == COMP) {
-            std::vector<std::string> formula = format(rest);
-            if (formula.size() != Tree.findVariables().size()) std::cout << WRONG_NUMBER_OF_ARGUMENTS << std::endl;
-            else if (!checkFormula(formula)) std::cout << WRONG_FORMULA << std::endl;
+        }else if (command == COMP) { // obliczenie wartosci formuly
+            std::vector<std::string> formula = format(rest); // formatowanie formuly do wektora stringow
+            if (formula.size() != Tree.findVariables().size()) std::cout << WRONG_NUMBER_OF_ARGUMENTS << std::endl; //sprawdzenie czy ilosc argumentow jest poprawna
+            else if (!checkFormula(formula)) std::cout << WRONG_FORMULA << std::endl; //sprawdzenie czy typ argumentow jest poprawny
             else {
-                T result = Tree.compute(formula);
-                std::cout << RESULT << result << std::endl;
+                T result = Tree.compute(formula); // obliczenie wartosci formuly
+                std::cout << RESULT << result << std::endl; // wypisanie wyniku
             }
 
 
         } else if (command == JOIN) {
-            std::vector<std::string> formula = format(rest);
-            if (checkFormulaWithVariables(formula) && isPN(formula)){
-                Tree.join(((new cTree<T>)->enter(formula)));
+            std::vector<std::string> formula = format(rest); // formatowanie formuly do wektora stringow
+            if (checkFormulaWithVariables(formula) && isPN(formula)){ //pamietac by checkFormula bylo pierwsze
+                Tree.join(((new cTree<T>)->enter(formula))); // dolaczenie drzewa
                 std::cout << JOINED_TREE << std::endl;
             } else std::cout << WRONG_FORMULA << std::endl;
 
 
         } else if (command == VARS){
-            std::set<std::string> vars = Tree.findVariables();
-            std::cout << FOUND_VARIABLES;
+            std::set<std::string> vars = Tree.findVariables(); // znalezienie zmiennych
+            std::cout << FOUND_VARIABLES; // wypisanie zmiennych
             for (const auto& s : vars) {
                 std::cout << s << " ";
             }
@@ -106,11 +106,9 @@ void UI<T>::run() {
         }else if (command == HELP) {
             printHelp();
         }else if (command == EXIT) {
-            delete &Tree;
             std::cout << EXIT_PROGRAM << std::endl;
             break;
         }else if (command == RESET) {
-            delete &Tree;
             std::cout << RESET_TYPE << std::endl;
             startUIAndDetermineTypeOfTree();
         } else {
@@ -141,7 +139,7 @@ void UI<T>::printHelp() {
 template<>
 bool UI<int>::checkFormula(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isInt(s)) return false;
+        if (!isInt(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }
@@ -149,7 +147,7 @@ bool UI<int>::checkFormula(std::vector<std::string> formula) {
 template<>
 bool UI<double>::checkFormula(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isDouble(s)) return false;
+        if (!isDouble(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }
@@ -157,7 +155,7 @@ bool UI<double>::checkFormula(std::vector<std::string> formula) {
 template<>
 bool UI<std::string>::checkFormula(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isString(s)) return false;
+        if (!isString(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }
@@ -165,7 +163,7 @@ bool UI<std::string>::checkFormula(std::vector<std::string> formula) {
 template<>
 bool UI<int>::checkFormulaWithVariables(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isInt(s) && !isVariable(s) && (!isOperator(s))) return false;
+        if (!isInt(s) && !isVariable(s) && (!isOperator(s))) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }
@@ -173,7 +171,7 @@ bool UI<int>::checkFormulaWithVariables(std::vector<std::string> formula) {
 template<>
 bool UI<double>::checkFormulaWithVariables(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isDouble(s) && !isVariable(s) && !isOperator(s)) return false;
+        if (!isDouble(s) && !isVariable(s) && !isOperator(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }
@@ -181,7 +179,7 @@ bool UI<double>::checkFormulaWithVariables(std::vector<std::string> formula) {
 template<>
 bool UI<std::string>::checkFormulaWithVariables(std::vector<std::string> formula) {
     for (const auto& s : formula) {
-        if (!isString(s) && !isOperator(s) && !isStringVariable(s)) return false;
+        if (!isString(s) && !isArthOperator(s) && !isStringVariable(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
     return true;
 }

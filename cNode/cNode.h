@@ -27,8 +27,8 @@ private:
     void cAddtoNode(cNode &newChild); //dodaje wezel do wektora dzieci
 
 
-    template <typename U>
-    friend class cTree; //deklaracja przyjazni z klasa cTree //TODO nie jestem pewien wciaz
+    template <typename T>
+    friend class cTree; //deklaracja przyjazni z klasa cTree
 
 };
 
