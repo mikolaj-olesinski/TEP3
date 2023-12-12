@@ -109,7 +109,8 @@ bool isDouble(const std::string sValue) {
 
 
 bool isVariable(std::string sValue) {
-    if (isalpha(sValue[0])) return true; //jesli pierwszy znak jest litera zwroc true
+    if (isOperator(sValue)) return false; //jesli string jest operatorem zwroc false
+    else if (isalpha(sValue[0])) return true; //jesli pierwszy znak jest litera zwroc true
     return false; //jesli nie zwroc false
 }
 
@@ -163,14 +164,14 @@ std::set<int> positionsOfPattern(const std::string& sFormula, const std::string&
 
 
 std::string subString(const std::string& string1, const std::string& string2) {
+    std::string result = string1; //string result = string1
 
     size_t found = string1.rfind(string2); //znajdz string2 w string1 od konca
     if (found != std::string::npos) { //jesli string2 jest w string1
-        std::string result = string1; //string result = string1
         result.erase(found, string2.length()); //usun z result string2
         return result; //zwroc result
     }
-    return string1; //jesli string2 nie jest w string1 zwroc string1
+    return result; //jesli string2 nie jest w string1 zwroc string1
 }
 
 std::string addString(const std::string& string1, const std::string& string2) {

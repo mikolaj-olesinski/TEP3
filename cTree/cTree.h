@@ -42,7 +42,7 @@ private:
 
     cNode *cRoot; //korzen drzewa
 
-    T computeNode(cNode* node, const std::map<std::string, std::string>& valuesOfVariables) const; //funkcja obliczajaca rekurencyjnie wartosc drzewa od danego wezla
+    T computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca rekurencyjnie wartosc drzewa od danego wezla
 
     cNode* findRightLeafParent() const; //funkcja znajdujaca prawy lisc
     static void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables); //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru

@@ -7,7 +7,3 @@ int main() {
     return 0;
 }
 
-
-//TODO komentarze
-//TODO testy
-

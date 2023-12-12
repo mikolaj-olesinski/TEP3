@@ -1,9 +1,11 @@
 #include "cTree.h"
 
 template <typename T>
-T cTree<T>::computeNode(cNode* node, const std::map<std::string, std::string>& valuesOfVariables) const {
+T cTree<T>::computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const {
+
     if (isVariable(node->sValue)) {
-        return std::stod(valuesOfVariables.at(node->sValue)); // Jeśli węzeł jest zmienną, zwróć wartość zmiennej
+        auto variables = findVariables();
+        return std::stod(valuesOfVariables[std::distance(variables.begin(), variables.find(node->sValue))]);
     } else if (!isOperator(node->sValue)) {
         return std::stod(node->sValue); // Jeśli węzeł nie jest operatorem, zwróć jego wartość
     } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
@@ -12,9 +14,9 @@ T cTree<T>::computeNode(cNode* node, const std::map<std::string, std::string>& v
         if(isTrigOperator(parentOperator)){ //sprawdzamy czy operator jest funkcja trygonometryczna
             T leftValue = computeNode((*node->vChildren)[0], valuesOfVariables); //obliczamy wartosc dziecka
             if (parentOperator == "sin") { //sprawdzamy jaka funkcja trygonometryczna
-                return sin(leftValue); //obliczamy wartosc funkcji
+                return std::sin(leftValue); //obliczamy wartosc funkcji
             } else if (parentOperator == "cos") { //sprawdzamy jaka funkcja trygonometryczna
-                return cos(leftValue); //obliczamy wartosc funkcji
+                return std::cos(leftValue); //obliczamy wartosc funkcji
             }
         }
         else if(isArthOperator(parentOperator)){ //sprawdzamy czy operator jest operatorem arytmetycznym
@@ -38,10 +40,11 @@ T cTree<T>::computeNode(cNode* node, const std::map<std::string, std::string>& v
 
 
 template <>
-std::string cTree<std::string>::computeNode(cNode* node, const std::map<std::string, std::string>& valuesOfVariables) const { //specjalizacja dla stringow
+std::string cTree<std::string>::computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const { //specjalizacja dla stringow
     if (isStringVariable(node->sValue)) { //sprawdzamy czy wartosc wezla jest zmienna dla stringow
-        return valuesOfVariables.at(node->sValue); // Jeśli węzeł jest zmienną, zwróć wartość zmiennej
-    } else if (!isOperator(node->sValue)) {
+        auto variables = findVariables();
+        return (valuesOfVariables[std::distance(variables.begin(), variables.find(node->sValue))]);    }
+    else if (!isOperator(node->sValue)) {
         return node->sValue; // Jeśli węzeł nie jest operatorem, zwróć jego wartość
     } else { // Jeśli węzeł jest operatorem, oblicz wartość na podstawie wartości jego dzieci
         std::string parentOperator = node->sValue;

@@ -78,18 +78,8 @@ cTree<T>& cTree<T>::join(const cTree& other) {
 
 template <typename T>
 T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const { //obliczanie wartosci drzewa
-    std::set<std::string> variables = findVariables(); //szukamy zmiennych
-    std::map<std::string, std::string> valuesMap; //tworzymy mape zmiennych i ich wartosci
 
-    auto varIt = variables.begin(); //tworzymy iterator na zmienne
-    for (const auto& value : valuesOfVariables) { //przechodzimy po wartosciach zmiennych
-        if (varIt != variables.end()) { //sprawdzamy czy iterator nie doszedl do konca
-            valuesMap[*varIt] = value; //przypisujemy wartosc zmiennej do mapy
-            ++varIt; //przesuwamy iterator
-        } else break; //jesli iterator doszedl do konca to przerywamy petle
-    }
-
-    return computeNode(cRoot, valuesMap); //obliczamy wartosc drzewa z wykorzystaniem mapy zmiennych i ich wartosci
+    return computeNode(cRoot, valuesOfVariables); //obliczamy wartosc drzewa z wykorzystaniem mapy zmiennych i ich wartosci
 }
 
 template <typename T>
