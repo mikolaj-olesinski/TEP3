@@ -1,0 +1,14 @@
+//
+// Created by Mikołaj Olesiński on 13/12/2023.
+//
+
+#ifndef TEP_LAB04DZIECICZENIE_CNODELEAFNUMBER_H
+#define TEP_LAB04DZIECICZENIE_CNODELEAFNUMBER_H
+
+
+class cNodeLeafNumber {
+
+};
+
+
+#endif //TEP_LAB04DZIECICZENIE_CNODELEAFNUMBER_H

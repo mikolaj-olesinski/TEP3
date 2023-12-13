@@ -1,0 +1,28 @@
+cNode:
+    cOperator:
+    double evaluate()
+    std::string operator
+
+        cArthOpertor:
+            compute() override
+        cTrigOperator:
+            compute() override
+
+    cLeaf:
+        double value;
+        getValue()
+
+        cNumber:
+
+        cVariable:
+            std::string name
+            getValue() override
+
+
+
+
+cTree:
+    cNodeOperator* root;
+    enter(std::vector<std::string> formula)
+    initalizeVariables(std::vector<std::string> variables)
+    compute()

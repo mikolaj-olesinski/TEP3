@@ -1,0 +1,8 @@
+//
+// Created by Mikołaj Olesiński on 13/12/2023.
+//
+
+#ifndef TEP_LAB04DZIECICZENIE_CNODE_H
+#define TEP_LAB04DZIECICZENIE_CNODE_H
+
+#endif //TEP_LAB04DZIECICZENIE_CNODE_H
