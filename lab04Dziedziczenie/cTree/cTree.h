@@ -11,7 +11,10 @@ public:
     void printPrefix();
     void printTree();
 
-    cTree enter(std::vector<std::string> formula);
+    cTree& enter(std::vector<std::string> formula);
+    cTree& join(cTree& tree);
+    cTree& reset();
+
 
 
 };
