@@ -1,4 +1,0 @@
-/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb/cmake-build-debug/CMakeFiles/lab04.dir
-/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb/cmake-build-debug/CMakeFiles/lab04Dziedziczenie.dir
-/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb/cmake-build-debug/CMakeFiles/rebuild_cache.dir
