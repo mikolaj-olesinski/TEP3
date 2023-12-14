@@ -3,7 +3,6 @@
 int main() {
 
     startUIAndDetermineTypeOfTree();
-    printf("Hello, World!\n");
     return 0;
 }
 

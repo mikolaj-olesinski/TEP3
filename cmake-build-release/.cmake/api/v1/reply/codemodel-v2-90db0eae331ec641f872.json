@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TEP_PREFIX_TREE",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "lab04::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab04-Release-e15da0e2378488626933.json",
+					"name" : "lab04",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lab04Dziedziczenie::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab04Dziedziczenie-Release-71488a10f3a11f908806.json",
+					"name" : "lab04Dziedziczenie",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb/cmake-build-release",
+		"source" : "/Users/mikolajolesinski/CLionProjects/TEP_PREFIX_TREEb"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
