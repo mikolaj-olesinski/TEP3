@@ -36,3 +36,19 @@ add_executable(lab04Dziedziczenie
 
 
 )
+
+
+add_executable(lab05
+        lab05/main.cpp
+        lab05/cTree/cTree.h
+        lab05/cTree/cTree.tpp
+        lab05/cNode/cNode.h
+        lab05/cNode/cNode.cpp
+        lab05/help-functions-and-constants/functions.h
+        lab05/help-functions-and-constants/functions.cpp
+        lab05/help-functions-and-constants/stale.h
+        lab05/help-functions-and-constants/UI.h
+        lab05/help-functions-and-constants/UI.tpp
+
+)
+

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TEP_PREFIX_TREE"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab04">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab04.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab04"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab04/fast">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab04.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab04/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab04Dziedziczenie">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab04Dziedziczenie.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab04Dziedziczenie"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab04Dziedziczenie/fast">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab04Dziedziczenie.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab04Dziedziczenie/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab05">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab05.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab05"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab05/fast">
+				<Option output="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/lab05.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab05/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/cNode/cNode.cpp">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/cNode/cNode.h">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/cTree/cTree.h">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/cTree/cTree.tpp">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/help-functions-and-constants/UI.h">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/help-functions-and-constants/UI.tpp">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/help-functions-and-constants/functions.cpp">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/help-functions-and-constants/functions.h">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/help-functions-and-constants/stale.h">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04/main.cpp">
+			<Option target="lab04"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNode.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cTree/cTree.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/cTree/cTree.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/helpFucntions/functions.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/helpFucntions/functions.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/helpFucntions/stale.h">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab04Dziedziczenie/main.cpp">
+			<Option target="lab04Dziedziczenie"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/cNode/cNode.cpp">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/cNode/cNode.h">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/cTree/cTree.h">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/cTree/cTree.tpp">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/help-functions-and-constants/UI.h">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/help-functions-and-constants/UI.tpp">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/help-functions-and-constants/functions.cpp">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/help-functions-and-constants/functions.h">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/help-functions-and-constants/stale.h">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/lab05/main.cpp">
+			<Option target="lab05"/>
+		</Unit>
+		<Unit filename="C:/Users/mikol/CLionProjects/TEP_PREFIX_TREE/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
