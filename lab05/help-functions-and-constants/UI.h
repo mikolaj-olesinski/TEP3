@@ -16,8 +16,3 @@ private:
 };
 
 void startUIAndDetermineTypeOfTree(); // uruchomienie UI i wybranie typu drzewa
-
-#ifndef TEP3_UI_H
-#define TEP3_UI_H
-
-#endif //TEP3_UI_H

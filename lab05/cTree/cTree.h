@@ -27,8 +27,8 @@ public:
 
     T compute(const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
 
-    cTree operator=(const cTree& other); //operator przypisania
-    cTree operator=(cTree&& other); //operator przenoszenia
+    cTree& operator=(const cTree& other); //operator przypisania
+    cTree& operator=(cTree&& other) noexcept ; //operator przenoszenia
     cTree operator+(const cTree& other) const; //operator dodawania
 
     std::set<std::string> findVariables() const; //funkcja znajdujaca zmienne w drzewie
