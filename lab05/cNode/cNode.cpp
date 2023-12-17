@@ -8,7 +8,6 @@ cNode::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(
 
 
 cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(other.sValue){ //konstruktor kopiujacy
-    std::cout << "Node copy constructor called" << std::endl;
     for (const auto &child : *(other.vChildren)) { // Przeglądamy dzieci innego węzła
         cNode *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
         newChild->cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
