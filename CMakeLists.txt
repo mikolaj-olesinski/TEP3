@@ -14,6 +14,7 @@ add_executable(lab04
         lab04/help-functions-and-constants/stale.h
         lab04/help-functions-and-constants/UI.h
         lab04/help-functions-and-constants/UI.tpp
+        lab05/help-functions-and-constants/CMySmartPointer.h
 
 )
 
@@ -49,6 +50,8 @@ add_executable(lab05
         lab05/help-functions-and-constants/stale.h
         lab05/help-functions-and-constants/UI.h
         lab05/help-functions-and-constants/UI.tpp
+        lab05/help-functions-and-constants/CMySmartPointer.h
+        lab05/help-functions-and-constants/CRefCounter.h
 
 )
 

@@ -27,7 +27,8 @@ public:
 
     T compute(const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
 
-    cTree& operator=(const cTree& other); //operator przypisania
+    cTree operator=(const cTree& other); //operator przypisania
+    cTree operator=(cTree&& other); //operator przenoszenia
     cTree operator+(const cTree& other) const; //operator dodawania
 
     std::set<std::string> findVariables() const; //funkcja znajdujaca zmienne w drzewie
@@ -55,6 +56,8 @@ private:
     static void printBTRecursiveHelp(const std::string& prefix, cNode* node, bool isLeft); //funkcja wypisujaca drzewo za pomoca rekurencji
     static std::vector<std::string> getPrefixRecursiveHelp(cNode *node); //funkcja zwracajaca drzewo w formie prefixowej za pomoca rekurencji
 };
+
+
 
 
 #endif

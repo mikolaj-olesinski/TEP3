@@ -83,23 +83,28 @@ T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const { //
 }
 
 template <typename T>
-cTree<T>& cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
+cTree<T> cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
     if (this != &other) { //sprawdzamy czy nie przypisujemy do samego siebie
         delete cRoot; //usuwamy pamiec po Root
         cRoot = new cNode(*other.cRoot); //tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy skopiowac
     }
-    return *this; //zwracamy obiekt cTree
+    return std::move(*this); //zwracamy obiekt cTree
 }
 
-
+template <typename T>
+cTree<T> cTree<T>::operator=(cTree<T>&& other) { //operator przenoszenia
+    if (this != &other) { //sprawdzamy czy nie przypisujemy do samego siebie
+        delete cRoot; //usuwamy pamiec po Root
+        cRoot = other.cRoot; //przypisujemy adres Roota drzewa ktore chcemy przeniesc
+        other.cRoot = nullptr; //ustawiamy Root drzewa ktore chcemy przeniesc na nullptr
+    }
+    return std::move(*this); //zwracamy obiekt cTree
+}
 
 template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const{ //operator dodawania
-
-    cTree *newTree; //tworzymy wskaznik na obiekt cTree w ktroym bedziemy przechowywac adres nowego drzewa
-    newTree = new cTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
-
-    return newTree->join(other); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
+    cTree newTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
+    return std::move(newTree.join(other)); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
 }
 
 template <typename T>
