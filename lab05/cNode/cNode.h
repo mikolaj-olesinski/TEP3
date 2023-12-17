@@ -1,5 +1,3 @@
-#ifndef TEP3_CNODE_H
-#define TEP3_CNODE_H
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -32,5 +30,3 @@ private:
 
 };
 
-
-#endif
