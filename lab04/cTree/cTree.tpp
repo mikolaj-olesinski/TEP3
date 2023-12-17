@@ -2,7 +2,6 @@
 
 template <typename T>
 cTree<T>::cTree(const cTree<T> &other) {
-    std::cout << "Copy constructor called" << std::endl;
     if (other.cRoot != nullptr) { //sprawdzamy czy drzewo ktore chcemy skopiowac nie jest puste
         cRoot = new cNode(*other.cRoot); //tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy skopiowac
     } else {
