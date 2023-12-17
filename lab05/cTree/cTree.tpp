@@ -107,10 +107,10 @@ cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
 
 template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
-{ //operator dodawania
-    cTree newTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
-    std::move(newTree.join(other)); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
-    return newTree; //zwracamy nowe drzewo
+{
+    cTree<T> newTree(*this); //tworzymy nowe drzewo z obecnego
+    newTree.join(other); //laczymy nowe drzewo z drugim
+    return newTree; // Return the new tree
 }
 
 
