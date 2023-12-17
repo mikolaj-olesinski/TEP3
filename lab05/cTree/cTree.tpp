@@ -12,13 +12,11 @@ cTree<T>::cTree(const cTree<T> &other) {
 
 template <typename T>
 cTree<T>::cTree() {
-    std::cout << "Default constructor called" << std::endl;
     cRoot = nullptr; //tworzymy puste drzewo w konstruktorze domyslnym
 }
 
 template <typename T>
 cTree<T>::~cTree() {
-    std::cout << "Destructor called" << std::endl;
     delete cRoot; //usuwamy pamiec po Root w destruktorze cNode usuwa pamiec po wszystkich dzieciach
 }
 
@@ -98,19 +96,21 @@ cTree<T>& cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
 }
 
 template <typename T>
-cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept { //operator przenoszenia
-    if (this != &other) { //sprawdzamy czy nie przypisujemy do samego siebie
+cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
+    if (this != &other) {
         delete cRoot; //usuwamy pamiec po Root
-        cRoot = other.cRoot; //przypisujemy adres Roota drzewa ktore chcemy przeniesc
-        other.cRoot = nullptr; //ustawiamy Root drzewa ktore chcemy przeniesc na nullptr
+        cRoot = other.cRoot;
+        other.cRoot = nullptr;
     }
-    return *this; //zwracamy obiekt cTree
+    return *this;
 }
 
 template <typename T>
-cTree<T> cTree<T>::operator+(const cTree<T>& other) const{ //operator dodawania
+cTree<T> cTree<T>::operator+(const cTree<T>& other) const
+{ //operator dodawania
     cTree newTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
-    return std::move(newTree.join(other)); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
+    std::move(newTree.join(other)); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
+    return newTree; //zwracamy nowe drzewo
 }
 
 
