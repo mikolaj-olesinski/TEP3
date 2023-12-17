@@ -2,6 +2,7 @@
 
 template <typename T>
 cTree<T>::cTree(const cTree<T> &other) {
+    std::cout << "Copy constructor called" << std::endl;
     if (other.cRoot != nullptr) { //sprawdzamy czy drzewo ktore chcemy skopiowac nie jest puste
         cRoot = new cNode(*other.cRoot); //tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy skopiowac
     } else {
@@ -65,16 +66,16 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 
 template <typename T>
 cTree<T>& cTree<T>::join(const cTree& other) {
-    if (cRoot == nullptr) { //sprawdzamy czy drzewo do ktorego chcemy dolaczyc jest puste
-        cRoot = new cNode(*other.cRoot); //jesli tak to tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy dolaczyc
-        return *this; //zwracamy obiekt cTree
+    if (cRoot == nullptr) {
+        cRoot = new cNode(*other.cRoot);
+        return *this;
     }
 
-    cNode* rightLeafParent = findRightLeafParent(); // rodzic ostatniego liścia zwracamy rodzica bo inaczej zwracamy kopie wskaznika na liścia
-    delete rightLeafParent->vChildren->back(); // Usuwamy ostatnie dziecko rodzica ostatniego liścia
-    rightLeafParent->cAddtoNode(*other.cRoot); // Dodajemy nowe dziecko do rodzica ostatniego liścia
-    return *this; // Zwracamy nowe drzewo
+    cNode* rightLeafParent = findRightLeafParent();
+    rightLeafParent->vChildren->back() = new cNode(*other.cRoot);
+    return *this;
 }
+
 
 template <typename T>
 T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const { //obliczanie wartosci drzewa

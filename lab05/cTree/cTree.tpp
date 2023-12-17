@@ -2,6 +2,7 @@
 
 template <typename T>
 cTree<T>::cTree(const cTree<T> &other) {
+    std::cout << "Copy constructor called" << std::endl;
     if (other.cRoot != nullptr) { //sprawdzamy czy drzewo ktore chcemy skopiowac nie jest puste
         cRoot = new cNode(*other.cRoot); //tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy skopiowac
     } else {
@@ -11,11 +12,13 @@ cTree<T>::cTree(const cTree<T> &other) {
 
 template <typename T>
 cTree<T>::cTree() {
+    std::cout << "Default constructor called" << std::endl;
     cRoot = nullptr; //tworzymy puste drzewo w konstruktorze domyslnym
 }
 
 template <typename T>
 cTree<T>::~cTree() {
+    std::cout << "Destructor called" << std::endl;
     delete cRoot; //usuwamy pamiec po Root w destruktorze cNode usuwa pamiec po wszystkich dzieciach
 }
 
@@ -52,6 +55,8 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
             CurrentNode->cAddtoNode(*newAddedNode); //dodajemy nowy wezel do aktualnego wezla na ktorym operujemy
             if (isOperator(newAddedNode->sValue)) {   //jesli nowy wezel jest operatorem to przechodzimy na niego
                 CurrentNode = newAddedNode; //przypisujemy adres nowego wezla do CurrentNode
+            } else{
+                delete newAddedNode; //jesli nowy wezel nie jest operatorem to usuwamy go
             }
         }
 
@@ -65,16 +70,16 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 
 template <typename T>
 cTree<T>& cTree<T>::join(const cTree& other) {
-    if (cRoot == nullptr) { //sprawdzamy czy drzewo do ktorego chcemy dolaczyc jest puste
-        cRoot = new cNode(*other.cRoot); //jesli tak to tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy dolaczyc
-        return *this; //zwracamy obiekt cTree
+    if (cRoot == nullptr) {
+        cRoot = new cNode(*other.cRoot);
+        return *this;
     }
 
-    cNode* rightLeafParent = findRightLeafParent(); // rodzic ostatniego liścia zwracamy rodzica bo inaczej zwracamy kopie wskaznika na liścia
-    delete rightLeafParent->vChildren->back(); // Usuwamy ostatnie dziecko rodzica ostatniego liścia
-    rightLeafParent->cAddtoNode(*other.cRoot); // Dodajemy nowe dziecko do rodzica ostatniego liścia
-    return *this; // Zwracamy nowe drzewo
+    cNode* rightLeafParent = findRightLeafParent();
+    rightLeafParent->vChildren->back() = new cNode(*other.cRoot);
+    return *this;
 }
+
 
 template <typename T>
 T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const { //obliczanie wartosci drzewa
@@ -88,8 +93,8 @@ cTree<T>& cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
         delete cRoot; //usuwamy pamiec po Root
         cRoot = new cNode(*other.cRoot); //tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy przypisac
     }
-    cTree result = std::move(*this); //tworzymy nowe drzewo z przypisanego drzewa
-    return result; //zwracamy obiekt cTree
+
+    return *this; //zwracamy obiekt cTree
 }
 
 template <typename T>
@@ -99,8 +104,7 @@ cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept { //operator przenosze
         cRoot = other.cRoot; //przypisujemy adres Roota drzewa ktore chcemy przeniesc
         other.cRoot = nullptr; //ustawiamy Root drzewa ktore chcemy przeniesc na nullptr
     }
-    cTree result = std::move(*this); //tworzymy nowe drzewo z przeniesionego drzewa
-    return result; //zwracamy obiekt cTree
+    return *this; //zwracamy obiekt cTree
 }
 
 template <typename T>
@@ -108,6 +112,7 @@ cTree<T> cTree<T>::operator+(const cTree<T>& other) const{ //operator dodawania
     cTree newTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
     return std::move(newTree.join(other)); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
 }
+
 
 template <typename T>
 std::set<std::string> cTree<T>::findVariables() const{
