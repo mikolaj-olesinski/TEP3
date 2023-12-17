@@ -94,7 +94,7 @@ cTree<T>& cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
 template <typename T>
 cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
     if (this != &other) {
-        delete cRoot; //usuwamy pamiec po Root
+        delete cRoot;
         cRoot = other.cRoot;
         other.cRoot = nullptr;
     }
@@ -104,9 +104,10 @@ cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
 template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
 {
-    cTree<T> newTree(*this); //tworzymy nowe drzewo z obecnego
-    newTree.join(other); //laczymy nowe drzewo z drugim
-    return newTree; // Return the new tree
+    cTree<T> newTree(*this);
+    newTree.join(other);
+    std::move(newTree);
+    return newTree;
 }
 
 
