@@ -9,6 +9,7 @@ public:
     cNode* leftChild;
     cNode* rightChild;
 
+    cNodeArthOperator(std::string operation): operation(operation), leftChild(nullptr), rightChild(nullptr) {};
     cNodeArthOperator(std::string operation, cNode* left, cNode* right): operation(operation), leftChild(left), rightChild(right) {};
     cNodeArthOperator(const cNodeArthOperator& other): operation(other.operation), leftChild(other.leftChild), rightChild(other.rightChild) {};
     ~cNodeArthOperator(){delete leftChild; delete rightChild;}

@@ -8,6 +8,8 @@ public:
     std::string operation;
     cNode* child;
 
+
+    cNodeTrigOperator(std::string operation): operation(operation), child(nullptr) {};
     cNodeTrigOperator(std::string operation, cNode* child): operation(operation), child(child) {};
     cNodeTrigOperator(const cNodeTrigOperator& other): operation(other.operation), child(other.child) {};
     ~cNodeTrigOperator(){delete child;}

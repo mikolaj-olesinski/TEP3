@@ -24,13 +24,9 @@ add_executable(lab04Dziedziczenie
         lab04Dziedziczenie/cTree/cTree.cpp
         lab04Dziedziczenie/cNode/cNode.h
         lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.h
-        lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.cpp
         lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.h
-        lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.cpp
         lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.h
-        lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.cpp
         lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.h
-        lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.cpp
         lab04Dziedziczenie/helpFucntions/functions.h
         lab04Dziedziczenie/helpFucntions/functions.cpp
         lab04Dziedziczenie/helpFucntions/stale.h
