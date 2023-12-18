@@ -6,13 +6,7 @@ class cNodeNumber : public cNode
 public:
     double value;
 
-    cNodeNumber(double value): value(value) {};
-    cNodeNumber(const cNodeNumber& other): value(other.value) {};
+    explicit cNodeNumber(double value) : value(value) {};
 
     double compute() const override;
 };
-
-double cNodeNumber::compute() const
-{
-    return value;
-}

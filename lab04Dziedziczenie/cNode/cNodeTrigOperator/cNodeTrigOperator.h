@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+#include <utility>
 #include "../cNode.h"
 
 
@@ -8,19 +10,13 @@ public:
     std::string operation;
     cNode* child;
 
+    explicit cNodeTrigOperator(std::string operation) : operation(std::move(operation)), child(nullptr) {}
+    explicit cNodeTrigOperator(std::string operation, cNode* child) : operation(std::move(operation)), child(child) {}
 
-    cNodeTrigOperator(std::string operation): operation(operation), child(nullptr) {};
-    cNodeTrigOperator(std::string operation, cNode* child): operation(operation), child(child) {};
-    cNodeTrigOperator(const cNodeTrigOperator& other): operation(other.operation), child(other.child) {};
-    ~cNodeTrigOperator(){delete child;}
+
 
     double compute() const override;
 
 };
 
-double cNodeTrigOperator::compute() const
-{
-    if (operation == "sin") return sin(child->compute());
-    else if (operation == "cos") return cos(child->compute());
-    else throw std::invalid_argument("Invalid operation");
-}
+

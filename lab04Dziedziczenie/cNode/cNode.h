@@ -1,11 +1,20 @@
+#ifndef CNODE_H
+#define CNODE_H
 
 class cNode
 {
 public:
-    cNode() = default;
+    cNode* parent; //TODO czy potrzebny parent jeszcze nwm
+
+    cNode(): parent(nullptr) {};
+    ~cNode(){};
+
     virtual double compute() const = 0;
-    virtual ~cNode() = default;
+    void cAddtoNode(cNode &newChild) {};
 
     friend class cTree;
 
 };
+
+
+#endif //CNODE_H

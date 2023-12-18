@@ -8,13 +8,11 @@ public:
     cNode* cRoot; //wskaznik na Roota
 
     double compute();
-    std::vector<std::string> findVariables();
-    void printPrefix();
-    void printTree();
 
+    cNode* createTreeRecursive(std::vector<std::string>& formula);
     cTree& enter(std::vector<std::string> formula);
-    cTree& join(cTree& tree);
-    cTree& reset();
+
+    cTree() : cRoot(nullptr) {};
 
 };
 
