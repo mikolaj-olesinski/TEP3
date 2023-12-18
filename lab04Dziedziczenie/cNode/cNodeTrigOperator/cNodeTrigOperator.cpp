@@ -6,3 +6,8 @@ double cNodeTrigOperator::compute() const
     else if (operation == "cos") return cos(child->compute());
     else throw std::invalid_argument("Invalid operation");
 }
+
+std::string cNodeTrigOperator::getValue() const
+{
+    return operation;
+}

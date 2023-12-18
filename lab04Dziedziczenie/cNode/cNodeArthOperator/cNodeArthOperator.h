@@ -11,9 +11,9 @@ public:
     cNode* leftChild;
     cNode* rightChild;
 
-    explicit cNodeArthOperator(std::string operation) : operation(std::move(operation)), leftChild(nullptr), rightChild(nullptr) {}
     cNodeArthOperator(std::string operation, cNode* leftChild, cNode* rightChild) : operation(std::move(operation)), leftChild(leftChild), rightChild(rightChild) {}
 
+    std::string getValue() const override;
     double compute() const override;
 
 };

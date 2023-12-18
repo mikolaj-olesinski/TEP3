@@ -9,3 +9,8 @@ double cNodeArthOperator::compute() const
     else if (operation == "/") return leftChild->compute() / rightChild->compute();
     else throw std::invalid_argument("Invalid operation");
 }
+
+std::string cNodeArthOperator::getValue() const
+{
+    return operation;
+}

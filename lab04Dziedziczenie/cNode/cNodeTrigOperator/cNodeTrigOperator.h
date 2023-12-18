@@ -14,7 +14,7 @@ public:
     explicit cNodeTrigOperator(std::string operation, cNode* child) : operation(std::move(operation)), child(child) {}
 
 
-
+    std::string getValue() const override;
     double compute() const override;
 
 };

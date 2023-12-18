@@ -16,5 +16,7 @@ int main() {
 
     std::cout << a << std::endl;
 
+    tree.printTree();
+
     return 0;
 }

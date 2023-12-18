@@ -4,13 +4,12 @@
 class cNode
 {
 public:
-    cNode* parent; //TODO czy potrzebny parent jeszcze nwm
 
-    cNode(): parent(nullptr) {};
-    ~cNode(){};
+    cNode() = default;
+    ~cNode() = default;
 
     virtual double compute() const = 0;
-    void cAddtoNode(cNode &newChild) {};
+    virtual std::string getValue() const { return ""; }
 
     friend class cTree;
 
