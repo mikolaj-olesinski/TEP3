@@ -12,5 +12,9 @@ int main() {
 
     tree.enter({"+", "1", "2"});
 
+    double a = tree.compute();
+
+    std::cout << a << std::endl;
+
     return 0;
 }

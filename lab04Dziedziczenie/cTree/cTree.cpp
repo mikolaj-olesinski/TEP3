@@ -31,3 +31,7 @@ cNode* cTree::createTreeRecursive(std::vector<std::string>& formula) {
         return new cNodeNumber(std::stod(token));
     }
 }
+
+double cTree::compute() {
+    return cRoot->compute();
+}
