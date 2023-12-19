@@ -1,7 +1,7 @@
 #include "cTree.h"
 
 template <typename T>
-T cTree<T>::computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const {
+T cTree<T>::computeNode(cNode* node, const std::vector<std::string>& valuesOfVariables) const {
 
     if (isVariable(node->sValue)) {
         auto variables = findVariables();
@@ -40,7 +40,7 @@ T cTree<T>::computeNode(cNode* node, const std::vector<std::string> valuesOfVari
 
 
 template <>
-std::string cTree<std::string>::computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const { //specjalizacja dla stringow
+std::string cTree<std::string>::computeNode(cNode* node, const std::vector<std::string>& valuesOfVariables) const { //specjalizacja dla stringow
     if (isStringVariable(node->sValue)) { //sprawdzamy czy wartosc wezla jest zmienna dla stringow
         auto variables = findVariables();
         return (valuesOfVariables[std::distance(variables.begin(), variables.find(node->sValue))]);    }
@@ -76,7 +76,7 @@ template <typename T>
 cNode* cTree<T>::findRightLeafParent() const {
     cNode *CurrentNode; //tworzymy wskaznik na obiekt cNode w ktroym bedziemy przechowywac adres aktualnego wezla na ktorym dzialamy
     CurrentNode = cRoot; //przypisujemy adres Roota do CurrentNode
-    while (CurrentNode->vChildren->size() != 0) { //przechodzimy po drzewie az dojdziemy do liscia
+    while (!CurrentNode->vChildren->empty()) { //przechodzimy po drzewie az dojdziemy do liscia
         CurrentNode = CurrentNode->vChildren->back(); //przechodzimy na ostatnie dziecko
     }
     return CurrentNode->cParent; //zwracamy rodzica liscia
@@ -185,8 +185,8 @@ std::vector<std::string> cTree<T>::getPrefixRecursiveHelp(cNode *node) {
         prefix.push_back(node->sValue); //dodajemy wartosc wezla do wektora prefiksu
 
         if (node->vChildren != nullptr && !node->vChildren->empty()) { //sprawdzamy czy wezel ma dzieci
-            for (size_t i = 0; i < node->vChildren->size(); ++i) { //przechodzimy po wszystkich dzieciach wezla
-                std::vector<std::string> temp = getPrefixRecursiveHelp((*node->vChildren)[i]); //rekurencyjnie pobieramy prefiks z kazdego dziecka wezla, na nowo tworzac wektor prefiksu
+            for (auto & i : *node->vChildren) { //przechodzimy po wszystkich dzieciach wezla
+                std::vector<std::string> temp = getPrefixRecursiveHelp(i); //rekurencyjnie pobieramy prefiks z kazdego dziecka wezla, na nowo tworzac wektor prefiksu
                 prefix.insert(prefix.end(), temp.begin(), temp.end()); //dodajemy prefiks z dziecka do prefiksu
             }
         }

@@ -52,7 +52,7 @@ std::vector<std::string> format(const std::string& sFormula) {
 }
 
 
-bool isInt(const std::string sValue) {
+bool isInt(const std::string& sValue) {
     if (sValue.empty()) {
         return false; // Pusty string nie jest liczbą całkowitą
     }
@@ -73,7 +73,7 @@ bool isInt(const std::string sValue) {
     return true;
 }
 
-bool isDouble(const std::string sValue) {
+bool isDouble(const std::string& sValue) {
     if (sValue.empty()) {
         return false; // Pusty string nie jest liczbą zmiennoprzecinkową
     }
@@ -114,7 +114,7 @@ bool isVariable(std::string sValue) {
     return false; //jesli nie zwroc false
 }
 
-bool isPN(std::vector<std::string> formula) { //
+bool isPN(std::vector<std::string>& formula) { //
     std::stack<int> s; //stos intow
     for (auto token = formula.rbegin(); token != formula.rend(); ++token) { //dla kazdego elementu wektora od konca
         if (isArthOperator(*token)) { //jesli element jest operatorem arytmetycznym
@@ -128,7 +128,7 @@ bool isPN(std::vector<std::string> formula) { //
     }
     return s.size() == 1; //jesli stos ma 1 element zwroc true
 }
-//sprawdza czy pierwszy i ostatni znak jest cudzyslowiem a w srodku sa tylko litery
+
 
 bool isStringVariable(std::string sValue) {
     if (sValue[0] == '"' && sValue[sValue.length() - 1] == '"') { //jesli pierwszy i ostatni znak jest cudzyslowiem
@@ -142,7 +142,7 @@ bool isStringVariable(std::string sValue) {
     return false; //jesli pierwszy i ostatni znak nie jest cudzyslowiem zwroc false
 }
 
-bool isString(std::string sValue) {
+bool isString(const std::string& sValue) {
     if (isOperator(sValue)) return false; //jesli string jest operatorem zwroc false
     for (char c : sValue) { //dla kazdego znaku w stringu
         if (!isalpha(c) && !isdigit(c)) { //jesli znak nie jest litera i nie jest cyfra

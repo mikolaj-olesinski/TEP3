@@ -138,7 +138,7 @@ void UI<T>::printHelp() {
 
 
 template<>
-bool UI<int>::checkFormula(std::vector<std::string> formula) {
+bool UI<int>::checkFormula(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isInt(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
@@ -146,7 +146,7 @@ bool UI<int>::checkFormula(std::vector<std::string> formula) {
 }
 
 template<>
-bool UI<double>::checkFormula(std::vector<std::string> formula) {
+bool UI<double>::checkFormula(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isDouble(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
@@ -154,7 +154,7 @@ bool UI<double>::checkFormula(std::vector<std::string> formula) {
 }
 
 template<>
-bool UI<std::string>::checkFormula(std::vector<std::string> formula) {
+bool UI<std::string>::checkFormula(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isString(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
@@ -162,7 +162,7 @@ bool UI<std::string>::checkFormula(std::vector<std::string> formula) {
 }
 
 template<>
-bool UI<int>::checkFormulaWithVariables(std::vector<std::string> formula) {
+bool UI<int>::checkFormulaWithVariables(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isInt(s) && !isVariable(s) && (!isOperator(s))) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
@@ -170,7 +170,7 @@ bool UI<int>::checkFormulaWithVariables(std::vector<std::string> formula) {
 }
 
 template<>
-bool UI<double>::checkFormulaWithVariables(std::vector<std::string> formula) {
+bool UI<double>::checkFormulaWithVariables(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isDouble(s) && !isVariable(s) && !isOperator(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }
@@ -178,7 +178,7 @@ bool UI<double>::checkFormulaWithVariables(std::vector<std::string> formula) {
 }
 
 template<>
-bool UI<std::string>::checkFormulaWithVariables(std::vector<std::string> formula) {
+bool UI<std::string>::checkFormulaWithVariables(std::vector<std::string>& formula) {
     for (const auto& s : formula) {
         if (!isString(s) && !isArthOperator(s) && !isStringVariable(s)) return false; // sprawdzenie czy typ argumentow jest poprawny
     }

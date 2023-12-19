@@ -12,13 +12,13 @@ bool isArthOperator(const std::string& sValue);  // sprawdza czy string jest ope
 bool isTrigOperator(const std::string& sValue); // sprawdza czy string jest operatorem trygonometrycznym
 int fMaxAmountOfChildren(const std::string& sValue); // zwraca maksymalna ilosc dzieci dla danego operatora
 
-bool isPN(std::vector<std::string> formula); // sprawdza czy podana formula jest poprawna notacja polska
+bool isPN(std::vector<std::string>& formula); // sprawdza czy podana formula jest poprawna notacja polska
 
 bool isVariable(std::string sValue); // sprawdza czy string jest zmienna
 bool isStringVariable(std::string sValue); // sprawdza czy string jest zmienna typu string
-bool isString(std::string sValue); // sprawdza czy string jest stringiem
-bool isInt(std::string sValue); // sprawdza czy string jest intem
-bool isDouble(std::string sValue); // sprawdza czy string jest doublem
+bool isString(const std::string& sValue); // sprawdza czy string jest stringiem
+bool isInt(const std::string& sValue); // sprawdza czy string jest intem
+bool isDouble(const std::string& sValue); // sprawdza czy string jest doublem
 
 std::set<int> positionsOfPattern(const std::string& sFormula, const std::string& sPattern); // zwraca pozycje wzorca w stringu
 std::string addString(const std::string& string1, const std::string& string2); // dodaje dwa stringi

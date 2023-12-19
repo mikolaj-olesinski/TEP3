@@ -25,7 +25,7 @@ public:
     cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
     cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
 
-    T compute(const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
+    T compute(const std::vector<std::string>& valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
 
     cTree& operator=(const cTree& other); //operator przypisania
     cTree operator+(const cTree& other) const; //operator dodawania
@@ -42,7 +42,7 @@ private:
 
     cNode *cRoot; //korzen drzewa
 
-    T computeNode(cNode* node, const std::vector<std::string> valuesOfVariables) const; //funkcja obliczajaca rekurencyjnie wartosc drzewa od danego wezla
+    T computeNode(cNode* node, const std::vector<std::string>& valuesOfVariables) const; //funkcja obliczajaca rekurencyjnie wartosc drzewa od danego wezla
 
     cNode* findRightLeafParent() const; //funkcja znajdujaca prawy lisc
     static void findVariablesRecursive(cNode* currentNode, std::set<std::string>& variables); //funkcja znajdujaca zmienne w drzewie za pomoca rekurencji i przekazujaca je do zbioru

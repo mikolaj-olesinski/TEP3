@@ -65,19 +65,19 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 
 template <typename T>
 cTree<T>& cTree<T>::join(const cTree& other) {
-    if (cRoot == nullptr) {
-        cRoot = new cNode(std::move(*other.cRoot));
+    if (cRoot == nullptr) { //sprawdzamy czy drzewo do ktorego chcemy dolaczyc jest puste
+        cRoot = new cNode(std::move(*other.cRoot)); //jesli tak to tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy dolaczyc
         return *this;
     }
 
-    cNode* rightLeafParent = findRightLeafParent();
-    rightLeafParent->vChildren->back() = other.cRoot;
-    return *this;
+    cNode* rightLeafParent = findRightLeafParent(); //znajdujemy rodzica prawego liscia
+    rightLeafParent->vChildren->back() = other.cRoot; //dolaczamy drzewo do rodzica prawego liscia
+    return *this; //zwracamy obiekt cTree
 }
 
 
 template <typename T>
-T cTree<T>::compute(const std::vector<std::string> valuesOfVariables) const { //obliczanie wartosci drzewa
+T cTree<T>::compute(const std::vector<std::string>& valuesOfVariables) const { //obliczanie wartosci drzewa
 
     return computeNode(cRoot, valuesOfVariables); //obliczamy wartosc drzewa z wykorzystaniem mapy zmiennych i ich wartosci
 }

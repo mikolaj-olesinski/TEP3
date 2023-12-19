@@ -11,8 +11,8 @@ public:
     void run(); // uruchomienie UI z odpowiednim typem drzewa
 private:
     void printHelp(); // wypisanie pomocy dla uzytkownika
-    bool checkFormulaWithVariables(std::vector<std::string> formula); // sprawdza czy formuła jest poprawna (formula moze byc ze zmiennymi)
-    bool checkFormula(std::vector<std::string> formula); // sprawdza czy formuła jest poprawna (formula musi byc bez zmiennych)
+    bool checkFormulaWithVariables(std::vector<std::string>& formula); // sprawdza czy formuła jest poprawna (formula moze byc ze zmiennymi)
+    bool checkFormula(std::vector<std::string>& formula); // sprawdza czy formuła jest poprawna (formula musi byc bez zmiennych)
 };
 
 void startUIAndDetermineTypeOfTree(); // uruchomienie UI i wybranie typu drzewa

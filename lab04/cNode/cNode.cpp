@@ -1,11 +1,13 @@
 #include "cNode.h"
 
-int copyCounter = 0;
+#include <utility>
 
-cNode::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(""){} //konstruktor domyslny
+int copyCounter = 0; //zmienna globalna przechowujaca ilosc kopiowan (do zadania 5)
+
+cNode::cNode() : vChildren(new std::vector<cNode*>()), cParent(nullptr) {} //konstruktor domyslny
 
 
-cNode::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(value){} //konstruktor z parametrem
+cNode::cNode(std::string value) : vChildren(new std::vector<cNode*>()), cParent(nullptr), sValue(std::move(value)){} //konstruktor z parametrem
 
 
 
@@ -13,7 +15,7 @@ cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent
     copyCounter++;
     std::cout << "copyCounter: " << copyCounter << std::endl;
     for (const auto &child : *(other.vChildren)) { // Przeglądamy dzieci innego węzła
-        cNode *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
+        auto *newChild = new cNode(*child);  // Rekurencyjne kopiowanie dzieci
         newChild->cParent = this;  // Ustawiamy rodzica nowego dziecka na siebie
         vChildren->push_back(newChild); // Dodaj nowe dziecko do wektora dzieci
     }
