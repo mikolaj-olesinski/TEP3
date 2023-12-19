@@ -12,17 +12,6 @@ static const std::string ARTH_OPERATORS[] = {"+", "-", "*", "/"}; //operatorzy a
 static const std::string TRIG_OPERATORS[] = {"sin", "cos"}; //operatorzy trygonometryczni
 
 
-const std::string HELP = "help";
-const std::string ENTER = "enter";
-const std::string VARS = "vars";
-const std::string PRINT = "print";
-const std::string PRINT_TREE = "printTree";
-const std::string COMP = "comp";
-const std::string JOIN = "join";
-const std::string RESET = "reset";
-const std::string EXIT = "exit";
-
-
 const std::string START_COMMAND = "Podaj komende: ";
 const std::string ERROR_COMMAND = "Blad podczas wczytywania komendy.";
 const std::string ENTERED_TREE = "Dodano drzewo ";
@@ -35,6 +24,8 @@ const std::string UNKNOWN_COMMAND = "Nieznana komenda.";
 const std::string RESET_TYPE = "Zresetowano typ drzewa.";
 const std::string WRONG_TYPE_OF_TREE = "Nieznany typ drzewa.";
 const std::string RESULT = "Wynik: ";
+
+
 
 #endif
 

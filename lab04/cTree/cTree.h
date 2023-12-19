@@ -1,5 +1,3 @@
-
-
 #ifndef TEP3_CTREE_H
 #define TEP3_CTREE_H
 
