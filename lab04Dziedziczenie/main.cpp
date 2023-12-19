@@ -10,13 +10,8 @@ int main() {
 
     cTree tree;
 
-    tree.enter({"+", "1", "2"});
+    tree.enter({"+", "1", "b"});
 
-    double a = tree.compute();
-
-    std::cout << a << std::endl;
-
-    tree.printTree();
 
     return 0;
 }
