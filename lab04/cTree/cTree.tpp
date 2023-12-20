@@ -94,12 +94,11 @@ cTree<T>& cTree<T>::operator=(const cTree<T>& other) { //operator przypisania
 
 
 template <typename T>
-cTree<T> cTree<T>::operator+(const cTree<T>& other) const{ //operator dodawania
-
-    cTree *newTree; //tworzymy wskaznik na obiekt cTree w ktroym bedziemy przechowywac adres nowego drzewa
-    newTree = new cTree(*this); //tworzymy nowe drzewo z drzewa z ktorym chcemy dodac z konstruktora kopiujacego
-
-    return newTree->join(other); //dolaczamy drzewo z ktorym chcemy dodac i zwracamy nowe drzewo
+cTree<T> cTree<T>::operator+(const cTree<T>& other) const
+{
+    cTree<T> newTree(*this);
+    newTree.join(other);
+    return newTree;
 }
 
 template <typename T>
