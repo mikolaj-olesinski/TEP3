@@ -115,10 +115,10 @@ cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
 template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
 {
-    cTree<T> newTree(std::move(*this));
-    cTree<T> newTree2(other);
-    newTree.join(newTree2);
-    return std::move(newTree);
+    cTree<T> newTree(*this); //tworzymy nowe drzewo z obecnego
+    cTree<T> newTree2(other); //tworzymy nowe drzewo z drugiego drzewa
+    newTree.join(newTree2); //laczymy nowe drzewa
+    return std::move(newTree); //zwracamy nowe (move semantics) jako rvalue
 }
 
 

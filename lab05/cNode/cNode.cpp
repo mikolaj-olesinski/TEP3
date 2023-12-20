@@ -21,6 +21,11 @@ cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent
     }
 }
 
+cNode::cNode(cNode &&other)  noexcept : vChildren(other.vChildren), cParent(other.cParent), sValue(std::move(other.sValue)) { //konstruktor przenoszacy
+    other.vChildren = nullptr; // Ustawiamy wskaźnik na dzieci na nullptr, żeby destruktor nie usuwał dzieci
+    other.cParent = nullptr; // Ustawiamy wskaźnik na rodzica na nullptr, żeby destruktor nie usuwał rodzica
+}
+
 // Destruktor
 cNode::~cNode() { //destruktor
     if (cParent != nullptr) {  // Jeżeli istnieje rodzic
