@@ -107,7 +107,6 @@ bool isDouble(const std::string sValue) {
     return true;
 }
 
-
 bool isVariable(std::string sValue) {
     if (isOperator(sValue)) return false; //jesli string jest operatorem zwroc false
     else if (isalpha(sValue[0])) return true; //jesli pierwszy znak jest litera zwroc true

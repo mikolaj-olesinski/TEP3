@@ -3,7 +3,7 @@
 
 int main() {
 
-    //startUIAndDetermineTypeOfTree();
+
 
     cTree<int> tree1, tree2, result;
     tree1.enter({"+", "1", "2"});
@@ -12,6 +12,8 @@ int main() {
 
     result = tree1 + tree2;
     result.printBT();
+
+    startUIAndDetermineTypeOfTree();
 
     return 0;
 }

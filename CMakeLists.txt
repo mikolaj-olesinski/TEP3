@@ -52,7 +52,6 @@ add_executable(lab05
         lab05/help-functions-and-constants/UI.h
         lab05/help-functions-and-constants/UI.tpp
         lab05/help-functions-and-constants/CMySmartPointer.h
-        lab05/help-functions-and-constants/CRefCounter.h
 
 )
 

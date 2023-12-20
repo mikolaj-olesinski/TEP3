@@ -1,10 +1,8 @@
-#include "CRefCounter.h"
-
 template <typename T>
 class CMySmartPointer
 {
 public:
-    CMySmartPointer(T *pcPointer) // konstruktor
+    explicit CMySmartPointer(T *pcPointer) // konstruktor
     {
         pc_pointer = pcPointer;  // przypisujemy wskaźnik
         pc_counter = new CRefCounter(); // tworzymy licznik referencji
@@ -49,6 +47,18 @@ public:
     T *operator->() { return (pc_pointer); } // operator strzałki
 
 private:
+    class CRefCounter
+    {
+    public:
+        CRefCounter() { i_count; } // konstruktor
+        int iAdd() { return(++i_count); } // inkrementacja
+        int iDec() { return(--i_count); }; // dekrementacja
+        int iGet() { return(i_count); } // odczyt
+    private:
+        int i_count; // licznik referencji
+    };
+    
+    
     CRefCounter *pc_counter; // licznik referencji
     T *pc_pointer;          // wskaznik na obiekt
 };
