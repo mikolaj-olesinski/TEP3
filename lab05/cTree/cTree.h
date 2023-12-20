@@ -19,6 +19,7 @@ class cTree {
 public:
 
     cTree(const cTree &other); //konstruktor kopiujacy
+    cTree(cTree<T> &&other) noexcept; //konstruktor przenoszacy
     cTree(); //konstruktor domyslny
     ~cTree(); //destruktor
 

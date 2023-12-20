@@ -10,6 +10,12 @@ cTree<T>::cTree(const cTree<T> &other) {
 }
 
 template <typename T>
+cTree<T>::cTree(cTree<T> &&other) noexcept {
+    cRoot = other.cRoot; //przypisujemy adres Roota drzewa ktore chcemy przeniesc do Roota nowego drzewa
+    other.cRoot = nullptr; //Root drzewa ktore chcemy przeniesc ustawiamy na nullptr
+}
+
+template <typename T>
 cTree<T>::cTree() {
     cRoot = nullptr; //tworzymy puste drzewo w konstruktorze domyslnym
 }
@@ -65,7 +71,7 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 template <typename T>
 cTree<T>& cTree<T>::join(cTree& other) {
     if (cRoot == nullptr) {
-        cRoot = new cNode(std::move(*other.cRoot));
+        cRoot = new cNode(*other.cRoot);
         other.cRoot = nullptr;
         return *this;
     }
@@ -109,11 +115,10 @@ cTree<T>& cTree<T>::operator=(cTree<T>&& other)  noexcept {
 template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
 {
-    cTree<T> newTree(*this);
+    cTree<T> newTree(std::move(*this));
     cTree<T> newTree2(other);
     newTree.join(newTree2);
-    std::move(newTree);
-    return newTree;
+    return std::move(newTree);
 }
 
 

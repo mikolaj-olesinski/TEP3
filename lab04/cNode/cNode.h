@@ -17,6 +17,7 @@ private:
     cNode(); //konstruktor prywany
     explicit cNode(std::string value); //konstruktor z parametrem
     cNode(const cNode &other); //konstruktor kopiujacy
+    cNode(cNode &&other) noexcept; //konstruktor kopiujacy
     ~cNode(); //destruktor
 
 
