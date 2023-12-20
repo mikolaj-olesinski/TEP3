@@ -63,14 +63,19 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 
 
 template <typename T>
-cTree<T>& cTree<T>::join(const cTree& other) {
+cTree<T>& cTree<T>::join(cTree& other) {
     if (cRoot == nullptr) {
         cRoot = new cNode(std::move(*other.cRoot));
+        other.cRoot = nullptr;
         return *this;
     }
 
     cNode* rightLeafParent = findRightLeafParent();
+    cNode* rightLeaf = rightLeafParent->vChildren->back();
     rightLeafParent->vChildren->back() = other.cRoot;
+    delete rightLeaf;
+    other.cRoot = nullptr;
+
     return *this;
 }
 
@@ -105,7 +110,8 @@ template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
 {
     cTree<T> newTree(*this);
-    newTree.join(other);
+    cTree<T> newTree2(other);
+    newTree.join(newTree2);
     std::move(newTree);
     return newTree;
 }

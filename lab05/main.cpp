@@ -13,7 +13,7 @@ int main() {
     result = tree1 + tree2;
     result.printBT();
 
-    startUIAndDetermineTypeOfTree();
+    //startUIAndDetermineTypeOfTree();
 
     return 0;
 }

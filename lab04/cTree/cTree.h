@@ -21,7 +21,7 @@ public:
     ~cTree(); //destruktor
 
     cTree& enter(const std::vector<std::string>& formula); //funkcja tworzaca drzewo z wektora stringow
-    cTree& join(const cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
+    cTree& join(cTree &other); //funkcja laczaca 2 drzewa przyjmujaca jako argument drugie drzewo
 
     T compute(const std::vector<std::string>& valuesOfVariables) const; //funkcja obliczajaca wartosc drzewa
 

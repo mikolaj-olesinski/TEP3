@@ -64,15 +64,20 @@ cTree<T>& cTree<T>::enter(const std::vector<std::string>& formula) {
 
 
 template <typename T>
-cTree<T>& cTree<T>::join(const cTree& other) {
-    if (cRoot == nullptr) { //sprawdzamy czy drzewo do ktorego chcemy dolaczyc jest puste
-        cRoot = new cNode(std::move(*other.cRoot)); //jesli tak to tworzymy nowy obiekt cNode z Roota drzewa ktore chcemy dolaczyc
+cTree<T>& cTree<T>::join(cTree& other) {
+    if (cRoot == nullptr) {
+        cRoot = new cNode(std::move(*other.cRoot));
+        other.cRoot = nullptr;
         return *this;
     }
 
-    cNode* rightLeafParent = findRightLeafParent(); //znajdujemy rodzica prawego liscia
-    rightLeafParent->vChildren->back() = other.cRoot; //dolaczamy drzewo do rodzica prawego liscia
-    return *this; //zwracamy obiekt cTree
+    cNode* rightLeafParent = findRightLeafParent();
+    cNode* rightLeaf = rightLeafParent->vChildren->back();
+    rightLeafParent->vChildren->back() = other.cRoot;
+    delete rightLeaf;
+    other.cRoot = nullptr;
+
+    return *this;
 }
 
 
@@ -97,7 +102,8 @@ template <typename T>
 cTree<T> cTree<T>::operator+(const cTree<T>& other) const
 {
     cTree<T> newTree(*this);
-    newTree.join(other);
+    cTree<T> newTree2(other);
+    newTree.join(newTree2);
     return newTree;
 }
 

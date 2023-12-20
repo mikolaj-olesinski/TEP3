@@ -23,7 +23,6 @@ cNode::cNode(const cNode &other) : vChildren(new std::vector<cNode*>()), cParent
 
 // Destruktor
 cNode::~cNode() { //destruktor
-
     if (cParent != nullptr) {  // Jeżeli istnieje rodzic
         auto& children = *(cParent->vChildren); // Pobieramy wektor dzieci rodzica
         children.erase(std::remove(children.begin(), children.end(), this), children.end()); // Usuwamy siebie z wektora dzieci rodzica
