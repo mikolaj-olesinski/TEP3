@@ -55,7 +55,3 @@ private:
     static std::vector<std::string> getPrefixRecursiveHelp(cNode *node); //funkcja zwracajaca drzewo w formie prefixowej za pomoca rekurencji
 };
 
-
-
-
-#endif
