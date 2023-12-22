@@ -1,7 +1,4 @@
-
-
-#ifndef TEP3_STALE_H
-#define TEP3_STALE_H
+#pragma once
 
 #include <string>
 
@@ -27,6 +24,5 @@ const std::string RESULT = "Wynik: ";
 
 
 
-#endif
 
 

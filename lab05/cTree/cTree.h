@@ -1,7 +1,4 @@
-
-
-#ifndef TEP3_CTREE_H
-#define TEP3_CTREE_H
+#pragma once
 
 #include <string>
 #include "../cNode/cNode.h"

@@ -1,9 +1,12 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "../cTree/cTree.h"
 #include "../cTree/cTreeHelp.tpp"
 #include "../cTree/cTree.tpp"
+
 
 template <typename T>
 class UI {
@@ -51,8 +54,3 @@ Command convertToCommand(const std::string& str) { // konwersja stringa na komen
     else return UNKNOWN;
 }
 
-
-#ifndef TEP3_UI_H
-#define TEP3_UI_H
-
-#endif //TEP3_UI_H

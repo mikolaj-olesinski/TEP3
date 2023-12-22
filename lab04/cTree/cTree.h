@@ -1,6 +1,3 @@
-#ifndef TEP3_CTREE_H
-#define TEP3_CTREE_H
-
 #include <string>
 #include "../cNode/cNode.h"
 #include <set>
@@ -56,4 +53,3 @@ private:
 };
 
 
-#endif

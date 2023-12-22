@@ -1,5 +1,5 @@
-#ifndef TEP3_CNODE_H
-#define TEP3_CNODE_H
+#pragma once
+
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -31,6 +31,3 @@ private:
     friend class cTree; //deklaracja przyjazni z klasa cTree
 
 };
-
-
-#endif

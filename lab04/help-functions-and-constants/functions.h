@@ -1,5 +1,4 @@
-#ifndef TEP3_FUNCTIONS_H
-#define TEP3_FUNCTIONS_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -28,5 +27,5 @@ std::string divString(const std::string& string1, const std::string& string2); /
 
 std::vector<std::string> format(const std::string& sFormula); // formatuje stringa do wektora stringow
 
-#endif
+
 
