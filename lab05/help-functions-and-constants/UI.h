@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -50,9 +52,3 @@ Command convertToCommand(const std::string& str) { // konwersja stringa na komen
     else if (str == "exit") return EXIT;
     else return UNKNOWN;
 }
-
-
-#ifndef TEP3_UI_H
-#define TEP3_UI_H
-
-#endif //TEP3_UI_H

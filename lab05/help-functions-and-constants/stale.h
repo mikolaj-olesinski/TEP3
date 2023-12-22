@@ -1,7 +1,4 @@
-
-
-#ifndef TEP3_STALE_H
-#define TEP3_STALE_H
+#pragma once
 
 #include <string>
 
@@ -24,6 +21,5 @@ const std::string RESET_TYPE = "Zresetowano typ drzewa.";
 const std::string WRONG_TYPE_OF_TREE = "Nieznany typ drzewa.";
 const std::string RESULT = "Wynik: ";
 
-#endif
-
+#
 
