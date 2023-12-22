@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include "../cNode/cNode.h"
 #include <set>
