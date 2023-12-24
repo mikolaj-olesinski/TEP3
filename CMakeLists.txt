@@ -3,6 +3,23 @@ project(TEP_PREFIX_TREE)
 
 set(CMAKE_CXX_STANDARD 14)
 
+
+add_executable(lab01
+        lab01/*.h
+        lab01/CTable.cpp
+        lab01/CTable.h
+        lab01/functions.cpp
+        lab01/functions.h
+        lab01/main.cpp
+)
+
+add_executable(lab02
+        lab02/CNumber.cpp
+        lab02/CNumber.h
+        lab02/CNumberOperations.cpp
+        lab02/main.cpp
+)
+
 add_executable(lab04
         lab04/main.cpp
         lab04/cTree/cTree.h
@@ -18,26 +35,6 @@ add_executable(lab04
 
 )
 
-add_executable(lab04Dziedziczenie
-        lab04Dziedziczenie/main.cpp
-        lab04Dziedziczenie/cTree/cTree.h
-        lab04Dziedziczenie/cTree/cTree.cpp
-        lab04Dziedziczenie/cNode/cNode.h
-        lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.h
-        lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.h
-        lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.h
-        lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.h
-        lab04Dziedziczenie/helpFucntions/functions.h
-        lab04Dziedziczenie/helpFucntions/functions.cpp
-        lab04Dziedziczenie/helpFucntions/stale.h
-        lab04Dziedziczenie/cNode/cNodeArthOperator/cNodeArthOperator.cpp
-        lab04Dziedziczenie/cNode/cNodeNumber/cNodeNumber.cpp
-        lab04Dziedziczenie/cNode/cNodeTrigOperator/cNodeTrigOperator.cpp
-        lab04Dziedziczenie/cNode/cNodeVariable/cNodeVariable.cpp
-        lab04Dziedziczenie/cNode/cNode.cpp
-
-
-)
 
 
 add_executable(lab05
