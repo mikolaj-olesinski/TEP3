@@ -1,2 +1,1 @@
-TEP 4
-TEP 3 jest w branchu nie
+TEP 3 in branch
